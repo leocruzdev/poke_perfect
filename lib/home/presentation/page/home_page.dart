@@ -3,11 +3,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:poke_perfect/home/presentation/bloc/home_bloc.dart';
 import 'package:poke_perfect/home/presentation/bloc/home_event.dart';
 import 'package:poke_perfect/home/presentation/bloc/home_state.dart';
+import 'package:poke_perfect/logger_service.dart'; // Adicione sua biblioteca de log aqui
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
   @override
   Widget build(BuildContext context) {
+    LoggerService.logDebug('HomePage built');
     return Scaffold(
       appBar: AppBar(
         title: const Text('PokéPerfect'),
@@ -21,21 +23,30 @@ class PokemonListView extends StatelessWidget {
   const PokemonListView({super.key});
   @override
   Widget build(BuildContext context) {
+    LoggerService.logDebug('PokemonListView built');
     return BlocBuilder<HomeBloc, HomeState>(
       builder: (context, state) {
+        LoggerService.logDebug(
+            'BlocBuilder rebuilding with state: ${state.runtimeType}');
+
         if (state is HomeInitial) {
+          LoggerService.logDebug('Initial state, fetching Pokemons');
           context.read<HomeBloc>().add(FetchPokemons());
         }
+
         if (state is HomeLoaded || state is HomeLoadMore) {
-          final pokemons = state is HomeLoaded
-              ? state.pokemons
-              : (state as HomeLoadMore).pokemons;
-          final isLoadMore = state is HomeLoadMore && !state.isMax;
+          final pokemons = (state as HomeLoaded).pokemons;
+          final isLoadMore =
+              state is HomeLoadMore && !(state as HomeLoadMore).isMax;
+          LoggerService.logDebug(
+              'Displaying list with ${pokemons.length} items, isLoadMore: $isLoadMore');
+
           return NotificationListener<ScrollNotification>(
             onNotification: (scrollInfo) {
               if (scrollInfo.metrics.pixels ==
                       scrollInfo.metrics.maxScrollExtent &&
                   !isLoadMore) {
+                LoggerService.logDebug('End of list reached, loading more...');
                 context.read<HomeBloc>().add(LoadNextPagePokemons());
               }
               return true;
@@ -49,7 +60,11 @@ class PokemonListView extends StatelessWidget {
                     child: Center(child: CircularProgressIndicator()),
                   );
                 }
+
                 final pokemon = pokemons[index];
+                LoggerService.logDebug(
+                    'Building item for Pokemon: ${pokemon.name}');
+
                 return ListTile(
                   title: Text(pokemon.name),
                   subtitle: Text(pokemon.url),
@@ -60,11 +75,15 @@ class PokemonListView extends StatelessWidget {
                       if (snapshot.connectionState == ConnectionState.waiting) {
                         return const CircularProgressIndicator();
                       } else if (snapshot.hasError) {
+                        LoggerService.logDebug(
+                            'Error loading image: ${snapshot.error}');
                         return const Icon(Icons.error);
                       } else {
                         return Image.network(
                           snapshot.data ?? '',
                           errorBuilder: (context, error, stackTrace) {
+                            LoggerService.logDebug(
+                                'Error in Image.network: $error');
                             return const Icon(Icons.broken_image_outlined);
                           },
                         );
@@ -76,6 +95,7 @@ class PokemonListView extends StatelessWidget {
             ),
           );
         } else if (state is HomeError) {
+          LoggerService.logDebug('Error state: ${state.message}');
           return Padding(
             padding: const EdgeInsets.all(32.0),
             child: Center(
@@ -96,6 +116,7 @@ class PokemonListView extends StatelessWidget {
             ),
           );
         } else {
+          LoggerService.logDebug('Loading state');
           return const Center(child: CircularProgressIndicator());
         }
       },

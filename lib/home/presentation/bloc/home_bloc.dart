@@ -26,42 +26,51 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     try {
       emit(HomeLoading());
       final pokemonListModel = await getAllPokemons();
+      LoggerService.logDebug('Fetched initial Pokemon list');
 
       allPokemons.addAll(pokemonListModel.pokemons);
       nextUrl = pokemonListModel.next;
       emit(HomeLoaded(allPokemons));
+      LoggerService.logDebug(
+          'HomeLoaded emitted with ${allPokemons.length} pokemons');
     } catch (e) {
-      LoggerService.logDebug('Error occurred: $e');
+      LoggerService.logDebug('Error occurred in _onFetchPokemons: $e');
       emit(HomeError(e.toString()));
     }
   }
 
   Future<void> _onLoadNextPagePokemons(
       LoadNextPagePokemons event, Emitter<HomeState> emit) async {
+    LoggerService.logDebug('LoadNextPagePokemons event called');
     if (nextUrl != null && !isLoadingNextPage) {
       isLoadingNextPage = true;
+      LoggerService.logDebug('Loading next page of Pokemon');
       try {
-        LoggerService.logDebug('Fetching next page: $nextUrl');
         final pokemonListModel = await getAllPokemons(url: nextUrl);
-
-        allPokemons.addAll(pokemonListModel.pokemons);
+        allPokemons += (pokemonListModel.pokemons);
         nextUrl = pokemonListModel.next;
         emit(HomeLoaded(allPokemons));
+        LoggerService.logDebug(
+            'Loaded additional Pokemon, total: ${allPokemons.length}');
       } catch (e) {
-        LoggerService.logDebug('Error occurred: $e');
+        LoggerService.logDebug('Error occurred in _onLoadNextPagePokemons: $e');
         emit(HomeError(e.toString()));
       } finally {
         isLoadingNextPage = false;
       }
+    } else {
+      LoggerService.logDebug(
+          'Next page request ignored (URL: $nextUrl, isLoading: $isLoadingNextPage)');
     }
   }
 
   Future<String> fetchImage(String detailsUrl) async {
+    LoggerService.logDebug('Fetching image for Pokemon with URL: $detailsUrl');
     try {
       final imageUrl = await getPokemonImage(detailsUrl);
       return imageUrl;
     } catch (e) {
-      LoggerService.logDebug('Error occurred: $e');
+      LoggerService.logDebug('Error occurred in fetchImage: $e');
       return '';
     }
   }
