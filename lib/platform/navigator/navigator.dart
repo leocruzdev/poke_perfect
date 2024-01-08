@@ -1,12 +1,15 @@
 import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
 import 'package:injectable/injectable.dart';
+import 'package:poke_perfect/platform/logger/logger_service.dart';
+import 'package:poke_perfect/platform/navigator/routes.dart';
 
 abstract class AppNavigator {
-  void go(String route, {Object? extra});
-  Future<T?> push<T extends Object?>(String route, {Object? extra});
+  void go(Routes route, {Object? extra});
+  Future<T?> push<T extends Object?>(Routes route, {Object? extra});
   void pop<T extends Object?>([T? result]);
   RouterConfig<Object> getRouterConfig();
+  Object? getExtras();
 }
 
 @Injectable(as: AppNavigator)
@@ -25,17 +28,26 @@ class NavigatorAppImpl implements AppNavigator {
   }
 
   @override
-  void go(String route, {Object? extra}) {
-    _goRouter.go(route, extra: extra);
+  void go(Routes route, {Object? extra}) {
+    LoggerService.logDebug('Navigating to route with GO: ${route.path}');
+    _goRouter.go(route.toString(), extra: extra);
   }
 
   @override
-  Future<T?> push<T extends Object?>(String route, {Object? extra}) {
-    return _goRouter.push<T>(route, extra: extra);
+  Future<T?> push<T extends Object?>(Routes route, {Object? extra}) {
+    LoggerService.logDebug('Navigating to route with PUSH: ${route.path}');
+    return _goRouter.push<T>(route.toString(), extra: extra);
   }
 
   @override
   void pop<T extends Object?>([T? result]) {
+    LoggerService.logDebug(
+        'Navigating to route with POP: ${result.toString()}');
     _goRouter.pop(result);
+  }
+
+  @override
+  Object? getExtras() {
+    return _goRouter.routerDelegate.currentConfiguration.extra;
   }
 }
