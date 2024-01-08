@@ -3,7 +3,7 @@ import 'package:poke_perfect/home/data/datasource/local_data_source.dart';
 import 'package:poke_perfect/home/data/datasource/remote_data_source.dart';
 import 'package:poke_perfect/home/data/model/pokemon_list_model.dart';
 import 'package:poke_perfect/home/domain/pokemon_repository.dart';
-import 'package:poke_perfect/logger_service.dart';
+import 'package:poke_perfect/platform/logger/logger_service.dart';
 
 @Injectable(as: PokemonRepository)
 class PokemonRepositoryImpl implements PokemonRepository {
@@ -19,20 +19,20 @@ class PokemonRepositoryImpl implements PokemonRepository {
   Future<PokemonListModel> getAllPokemons(
       {String? url, int? limit, int? offset}) async {
     try {
-      LoggerService.logDebug('Checking local cache for pokemons');
-      final localData = await localDataSource.getPokemons();
-      if (localData != null) {
-        // Se os dados locais estão disponíveis e a URL de próxima página não é a mesma que a última
-        if (localData.next != url || url == null) {
-          LoggerService.logDebug('Returning pokemons from local cache');
-          return localData;
-        }
-      }
+      // LoggerService.logDebug('Checking local cache for pokemons');
+      // final localData = await localDataSource.getPokemons();
+      // if (localData != null) {
+      //   // Se os dados locais estão disponíveis e a URL de próxima página não é a mesma que a última
+      //   if (localData.next != url || url == null) {
+      //     LoggerService.logDebug('Returning pokemons from local cache');
+      //     return localData;
+      //   }
+      // }
 
       LoggerService.logDebug('Fetching pokemons from remote');
       final remoteData = await remoteDataSource.fetchPokemons(
           url: url, limit: limit, offset: offset);
-      await localDataSource.savePokemons(remoteData);
+      //await localDataSource.savePokemons(remoteData);
       LoggerService.logDebug('Pokemons fetched and saved to local cache');
       return remoteData;
     } catch (e) {

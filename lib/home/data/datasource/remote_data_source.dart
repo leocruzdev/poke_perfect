@@ -1,7 +1,7 @@
 import 'package:injectable/injectable.dart';
 import 'package:poke_perfect/home/data/model/pokemon_list_model.dart';
 import 'package:poke_perfect/home/data/service/pokemon_api_service.dart';
-import 'package:poke_perfect/logger_service.dart';
+import 'package:poke_perfect/platform/logger/logger_service.dart';
 
 abstract class RemoteDataSource {
   Future<PokemonListModel> fetchPokemons(

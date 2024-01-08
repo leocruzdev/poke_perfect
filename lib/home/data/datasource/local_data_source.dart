@@ -2,7 +2,7 @@ import 'package:get_it/get_it.dart';
 import 'package:hive/hive.dart';
 import 'package:injectable/injectable.dart';
 import 'package:poke_perfect/home/data/model/pokemon_list_model.dart';
-import 'package:poke_perfect/logger_service.dart';
+import 'package:poke_perfect/platform/logger/logger_service.dart';
 
 abstract class LocalDataSource {
   Future<PokemonListModel?> getPokemons();

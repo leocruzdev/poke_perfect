@@ -2,7 +2,7 @@ import 'package:injectable/injectable.dart';
 import 'package:poke_perfect/home/data/mappers/pokemon_list_mapper.dart';
 import 'package:poke_perfect/home/domain/model/pokemon_list_model.dart';
 import 'package:poke_perfect/home/domain/pokemon_repository.dart';
-import 'package:poke_perfect/logger_service.dart';
+import 'package:poke_perfect/platform/logger/logger_service.dart';
 
 @injectable
 class GetAllPokemons {

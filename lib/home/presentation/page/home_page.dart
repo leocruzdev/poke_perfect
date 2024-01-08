@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:poke_perfect/home/presentation/bloc/home_bloc.dart';
 import 'package:poke_perfect/home/presentation/bloc/home_event.dart';
 import 'package:poke_perfect/home/presentation/bloc/home_state.dart';
-import 'package:poke_perfect/logger_service.dart'; // Adicione sua biblioteca de log aqui
+import 'package:poke_perfect/platform/logger/logger_service.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});

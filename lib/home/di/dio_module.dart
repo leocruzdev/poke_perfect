@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
-import 'package:poke_perfect/logger_service.dart';
+import 'package:poke_perfect/platform/logger/logger_service.dart';
 
 @module
 abstract class DioModule {
