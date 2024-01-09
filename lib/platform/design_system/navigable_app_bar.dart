@@ -24,8 +24,6 @@ class NavigableAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.elevation = 0,
   });
 
-  static const double appBarHeight = 56.0;
-
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -45,9 +43,9 @@ class NavigableAppBar extends StatelessWidget implements PreferredSizeWidget {
                 highlightColor: Colors.transparent,
                 splashColor: Colors.transparent,
                 icon: Icon(
+                  size: kIconSize + 4,
                   leadingIcon,
                   color: theme.colorScheme.onPrimary,
-                  size: kIconSize + 4,
                 ),
                 onPressed: leadingAction,
               ),
