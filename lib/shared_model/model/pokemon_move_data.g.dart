@@ -8,7 +8,7 @@ part of 'pokemon_move_data.dart';
 
 _$_PokemonMoveData _$$_PokemonMoveDataFromJson(Map<String, dynamic> json) =>
     _$_PokemonMoveData(
-      move: NamedApiResourceData.fromJson(json['move'] as Map<String, dynamic>),
+      move: PokemonItem.fromJson(json['move'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$_PokemonMoveDataToJson(_$_PokemonMoveData instance) =>

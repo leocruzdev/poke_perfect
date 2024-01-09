@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import 'named_api_resource_data.dart';
+import 'pokemon_item_data.dart';
 
 part 'pokemon_stat_data.freezed.dart';
 part 'pokemon_stat_data.g.dart';
@@ -9,7 +9,7 @@ part 'pokemon_stat_data.g.dart';
 class PokemonStatData with _$PokemonStatData {
   factory PokemonStatData({
     @JsonKey(name: 'base_stat') required int baseStat,
-    required NamedApiResourceData stat,
+    required PokemonItem stat,
   }) = _PokemonStatData;
 
   factory PokemonStatData.fromJson(Map<String, dynamic> json) =>

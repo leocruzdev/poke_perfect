@@ -22,7 +22,7 @@ PokemonStatData _$PokemonStatDataFromJson(Map<String, dynamic> json) {
 mixin _$PokemonStatData {
   @JsonKey(name: 'base_stat')
   int get baseStat => throw _privateConstructorUsedError;
-  NamedApiResourceData get stat => throw _privateConstructorUsedError;
+  PokemonItem get stat => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -36,10 +36,9 @@ abstract class $PokemonStatDataCopyWith<$Res> {
           PokemonStatData value, $Res Function(PokemonStatData) then) =
       _$PokemonStatDataCopyWithImpl<$Res, PokemonStatData>;
   @useResult
-  $Res call(
-      {@JsonKey(name: 'base_stat') int baseStat, NamedApiResourceData stat});
+  $Res call({@JsonKey(name: 'base_stat') int baseStat, PokemonItem stat});
 
-  $NamedApiResourceDataCopyWith<$Res> get stat;
+  $PokemonItemCopyWith<$Res> get stat;
 }
 
 /// @nodoc
@@ -66,14 +65,14 @@ class _$PokemonStatDataCopyWithImpl<$Res, $Val extends PokemonStatData>
       stat: null == stat
           ? _value.stat
           : stat // ignore: cast_nullable_to_non_nullable
-              as NamedApiResourceData,
+              as PokemonItem,
     ) as $Val);
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $NamedApiResourceDataCopyWith<$Res> get stat {
-    return $NamedApiResourceDataCopyWith<$Res>(_value.stat, (value) {
+  $PokemonItemCopyWith<$Res> get stat {
+    return $PokemonItemCopyWith<$Res>(_value.stat, (value) {
       return _then(_value.copyWith(stat: value) as $Val);
     });
   }
@@ -87,11 +86,10 @@ abstract class _$$_PokemonStatDataCopyWith<$Res>
       __$$_PokemonStatDataCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {@JsonKey(name: 'base_stat') int baseStat, NamedApiResourceData stat});
+  $Res call({@JsonKey(name: 'base_stat') int baseStat, PokemonItem stat});
 
   @override
-  $NamedApiResourceDataCopyWith<$Res> get stat;
+  $PokemonItemCopyWith<$Res> get stat;
 }
 
 /// @nodoc
@@ -116,7 +114,7 @@ class __$$_PokemonStatDataCopyWithImpl<$Res>
       stat: null == stat
           ? _value.stat
           : stat // ignore: cast_nullable_to_non_nullable
-              as NamedApiResourceData,
+              as PokemonItem,
     ));
   }
 }
@@ -134,7 +132,7 @@ class _$_PokemonStatData implements _PokemonStatData {
   @JsonKey(name: 'base_stat')
   final int baseStat;
   @override
-  final NamedApiResourceData stat;
+  final PokemonItem stat;
 
   @override
   String toString() {
@@ -172,7 +170,7 @@ class _$_PokemonStatData implements _PokemonStatData {
 abstract class _PokemonStatData implements PokemonStatData {
   factory _PokemonStatData(
       {@JsonKey(name: 'base_stat') required final int baseStat,
-      required final NamedApiResourceData stat}) = _$_PokemonStatData;
+      required final PokemonItem stat}) = _$_PokemonStatData;
 
   factory _PokemonStatData.fromJson(Map<String, dynamic> json) =
       _$_PokemonStatData.fromJson;
@@ -181,7 +179,7 @@ abstract class _PokemonStatData implements PokemonStatData {
   @JsonKey(name: 'base_stat')
   int get baseStat;
   @override
-  NamedApiResourceData get stat;
+  PokemonItem get stat;
   @override
   @JsonKey(ignore: true)
   _$$_PokemonStatDataCopyWith<_$_PokemonStatData> get copyWith =>

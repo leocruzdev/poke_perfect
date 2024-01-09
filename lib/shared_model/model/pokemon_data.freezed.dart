@@ -22,11 +22,11 @@ PokemonData _$PokemonDataFromJson(Map<String, dynamic> json) {
 mixin _$PokemonData {
   int get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
-  int? get height => throw _privateConstructorUsedError;
-  List<NamedApiResourceData> get types => throw _privateConstructorUsedError;
-  String get imageUrl => throw _privateConstructorUsedError;
+  int get height => throw _privateConstructorUsedError;
+  List<PokemonItem> get types => throw _privateConstructorUsedError;
+  SpritesData get sprites => throw _privateConstructorUsedError;
   List<AbilityData> get abilities => throw _privateConstructorUsedError;
-  List<NamedApiResourceData> get forms => throw _privateConstructorUsedError;
+  List<PokemonItem> get forms => throw _privateConstructorUsedError;
   List<PokemonMoveData> get moves => throw _privateConstructorUsedError;
   List<PokemonStatData> get stats => throw _privateConstructorUsedError;
 
@@ -45,13 +45,15 @@ abstract class $PokemonDataCopyWith<$Res> {
   $Res call(
       {int id,
       String name,
-      int? height,
-      List<NamedApiResourceData> types,
-      String imageUrl,
+      int height,
+      List<PokemonItem> types,
+      SpritesData sprites,
       List<AbilityData> abilities,
-      List<NamedApiResourceData> forms,
+      List<PokemonItem> forms,
       List<PokemonMoveData> moves,
       List<PokemonStatData> stats});
+
+  $SpritesDataCopyWith<$Res> get sprites;
 }
 
 /// @nodoc
@@ -69,9 +71,9 @@ class _$PokemonDataCopyWithImpl<$Res, $Val extends PokemonData>
   $Res call({
     Object? id = null,
     Object? name = null,
-    Object? height = freezed,
+    Object? height = null,
     Object? types = null,
-    Object? imageUrl = null,
+    Object? sprites = null,
     Object? abilities = null,
     Object? forms = null,
     Object? moves = null,
@@ -86,18 +88,18 @@ class _$PokemonDataCopyWithImpl<$Res, $Val extends PokemonData>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      height: freezed == height
+      height: null == height
           ? _value.height
           : height // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as int,
       types: null == types
           ? _value.types
           : types // ignore: cast_nullable_to_non_nullable
-              as List<NamedApiResourceData>,
-      imageUrl: null == imageUrl
-          ? _value.imageUrl
-          : imageUrl // ignore: cast_nullable_to_non_nullable
-              as String,
+              as List<PokemonItem>,
+      sprites: null == sprites
+          ? _value.sprites
+          : sprites // ignore: cast_nullable_to_non_nullable
+              as SpritesData,
       abilities: null == abilities
           ? _value.abilities
           : abilities // ignore: cast_nullable_to_non_nullable
@@ -105,7 +107,7 @@ class _$PokemonDataCopyWithImpl<$Res, $Val extends PokemonData>
       forms: null == forms
           ? _value.forms
           : forms // ignore: cast_nullable_to_non_nullable
-              as List<NamedApiResourceData>,
+              as List<PokemonItem>,
       moves: null == moves
           ? _value.moves
           : moves // ignore: cast_nullable_to_non_nullable
@@ -115,6 +117,14 @@ class _$PokemonDataCopyWithImpl<$Res, $Val extends PokemonData>
           : stats // ignore: cast_nullable_to_non_nullable
               as List<PokemonStatData>,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $SpritesDataCopyWith<$Res> get sprites {
+    return $SpritesDataCopyWith<$Res>(_value.sprites, (value) {
+      return _then(_value.copyWith(sprites: value) as $Val);
+    });
   }
 }
 
@@ -129,13 +139,16 @@ abstract class _$$_PokemonDataCopyWith<$Res>
   $Res call(
       {int id,
       String name,
-      int? height,
-      List<NamedApiResourceData> types,
-      String imageUrl,
+      int height,
+      List<PokemonItem> types,
+      SpritesData sprites,
       List<AbilityData> abilities,
-      List<NamedApiResourceData> forms,
+      List<PokemonItem> forms,
       List<PokemonMoveData> moves,
       List<PokemonStatData> stats});
+
+  @override
+  $SpritesDataCopyWith<$Res> get sprites;
 }
 
 /// @nodoc
@@ -151,9 +164,9 @@ class __$$_PokemonDataCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
     Object? name = null,
-    Object? height = freezed,
+    Object? height = null,
     Object? types = null,
-    Object? imageUrl = null,
+    Object? sprites = null,
     Object? abilities = null,
     Object? forms = null,
     Object? moves = null,
@@ -168,18 +181,18 @@ class __$$_PokemonDataCopyWithImpl<$Res>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      height: freezed == height
+      height: null == height
           ? _value.height
           : height // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as int,
       types: null == types
           ? _value._types
           : types // ignore: cast_nullable_to_non_nullable
-              as List<NamedApiResourceData>,
-      imageUrl: null == imageUrl
-          ? _value.imageUrl
-          : imageUrl // ignore: cast_nullable_to_non_nullable
-              as String,
+              as List<PokemonItem>,
+      sprites: null == sprites
+          ? _value.sprites
+          : sprites // ignore: cast_nullable_to_non_nullable
+              as SpritesData,
       abilities: null == abilities
           ? _value._abilities
           : abilities // ignore: cast_nullable_to_non_nullable
@@ -187,7 +200,7 @@ class __$$_PokemonDataCopyWithImpl<$Res>
       forms: null == forms
           ? _value._forms
           : forms // ignore: cast_nullable_to_non_nullable
-              as List<NamedApiResourceData>,
+              as List<PokemonItem>,
       moves: null == moves
           ? _value._moves
           : moves // ignore: cast_nullable_to_non_nullable
@@ -207,10 +220,10 @@ class _$_PokemonData implements _PokemonData {
       {required this.id,
       required this.name,
       required this.height,
-      required final List<NamedApiResourceData> types,
-      required this.imageUrl,
+      required final List<PokemonItem> types,
+      required this.sprites,
       required final List<AbilityData> abilities,
-      required final List<NamedApiResourceData> forms,
+      required final List<PokemonItem> forms,
       required final List<PokemonMoveData> moves,
       required final List<PokemonStatData> stats})
       : _types = types,
@@ -227,17 +240,17 @@ class _$_PokemonData implements _PokemonData {
   @override
   final String name;
   @override
-  final int? height;
-  final List<NamedApiResourceData> _types;
+  final int height;
+  final List<PokemonItem> _types;
   @override
-  List<NamedApiResourceData> get types {
+  List<PokemonItem> get types {
     if (_types is EqualUnmodifiableListView) return _types;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_types);
   }
 
   @override
-  final String imageUrl;
+  final SpritesData sprites;
   final List<AbilityData> _abilities;
   @override
   List<AbilityData> get abilities {
@@ -246,9 +259,9 @@ class _$_PokemonData implements _PokemonData {
     return EqualUnmodifiableListView(_abilities);
   }
 
-  final List<NamedApiResourceData> _forms;
+  final List<PokemonItem> _forms;
   @override
-  List<NamedApiResourceData> get forms {
+  List<PokemonItem> get forms {
     if (_forms is EqualUnmodifiableListView) return _forms;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_forms);
@@ -272,7 +285,7 @@ class _$_PokemonData implements _PokemonData {
 
   @override
   String toString() {
-    return 'PokemonData(id: $id, name: $name, height: $height, types: $types, imageUrl: $imageUrl, abilities: $abilities, forms: $forms, moves: $moves, stats: $stats)';
+    return 'PokemonData(id: $id, name: $name, height: $height, types: $types, sprites: $sprites, abilities: $abilities, forms: $forms, moves: $moves, stats: $stats)';
   }
 
   @override
@@ -284,8 +297,7 @@ class _$_PokemonData implements _PokemonData {
             (identical(other.name, name) || other.name == name) &&
             (identical(other.height, height) || other.height == height) &&
             const DeepCollectionEquality().equals(other._types, _types) &&
-            (identical(other.imageUrl, imageUrl) ||
-                other.imageUrl == imageUrl) &&
+            (identical(other.sprites, sprites) || other.sprites == sprites) &&
             const DeepCollectionEquality()
                 .equals(other._abilities, _abilities) &&
             const DeepCollectionEquality().equals(other._forms, _forms) &&
@@ -301,7 +313,7 @@ class _$_PokemonData implements _PokemonData {
       name,
       height,
       const DeepCollectionEquality().hash(_types),
-      imageUrl,
+      sprites,
       const DeepCollectionEquality().hash(_abilities),
       const DeepCollectionEquality().hash(_forms),
       const DeepCollectionEquality().hash(_moves),
@@ -325,11 +337,11 @@ abstract class _PokemonData implements PokemonData {
   factory _PokemonData(
       {required final int id,
       required final String name,
-      required final int? height,
-      required final List<NamedApiResourceData> types,
-      required final String imageUrl,
+      required final int height,
+      required final List<PokemonItem> types,
+      required final SpritesData sprites,
       required final List<AbilityData> abilities,
-      required final List<NamedApiResourceData> forms,
+      required final List<PokemonItem> forms,
       required final List<PokemonMoveData> moves,
       required final List<PokemonStatData> stats}) = _$_PokemonData;
 
@@ -341,15 +353,15 @@ abstract class _PokemonData implements PokemonData {
   @override
   String get name;
   @override
-  int? get height;
+  int get height;
   @override
-  List<NamedApiResourceData> get types;
+  List<PokemonItem> get types;
   @override
-  String get imageUrl;
+  SpritesData get sprites;
   @override
   List<AbilityData> get abilities;
   @override
-  List<NamedApiResourceData> get forms;
+  List<PokemonItem> get forms;
   @override
   List<PokemonMoveData> get moves;
   @override

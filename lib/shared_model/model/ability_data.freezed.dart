@@ -20,7 +20,7 @@ AbilityData _$AbilityDataFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$AbilityData {
-  NamedApiResourceData get ability => throw _privateConstructorUsedError;
+  PokemonItem get ability => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -34,9 +34,9 @@ abstract class $AbilityDataCopyWith<$Res> {
           AbilityData value, $Res Function(AbilityData) then) =
       _$AbilityDataCopyWithImpl<$Res, AbilityData>;
   @useResult
-  $Res call({NamedApiResourceData ability});
+  $Res call({PokemonItem ability});
 
-  $NamedApiResourceDataCopyWith<$Res> get ability;
+  $PokemonItemCopyWith<$Res> get ability;
 }
 
 /// @nodoc
@@ -58,14 +58,14 @@ class _$AbilityDataCopyWithImpl<$Res, $Val extends AbilityData>
       ability: null == ability
           ? _value.ability
           : ability // ignore: cast_nullable_to_non_nullable
-              as NamedApiResourceData,
+              as PokemonItem,
     ) as $Val);
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $NamedApiResourceDataCopyWith<$Res> get ability {
-    return $NamedApiResourceDataCopyWith<$Res>(_value.ability, (value) {
+  $PokemonItemCopyWith<$Res> get ability {
+    return $PokemonItemCopyWith<$Res>(_value.ability, (value) {
       return _then(_value.copyWith(ability: value) as $Val);
     });
   }
@@ -79,10 +79,10 @@ abstract class _$$_AbilityDataCopyWith<$Res>
       __$$_AbilityDataCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({NamedApiResourceData ability});
+  $Res call({PokemonItem ability});
 
   @override
-  $NamedApiResourceDataCopyWith<$Res> get ability;
+  $PokemonItemCopyWith<$Res> get ability;
 }
 
 /// @nodoc
@@ -102,7 +102,7 @@ class __$$_AbilityDataCopyWithImpl<$Res>
       ability: null == ability
           ? _value.ability
           : ability // ignore: cast_nullable_to_non_nullable
-              as NamedApiResourceData,
+              as PokemonItem,
     ));
   }
 }
@@ -116,7 +116,7 @@ class _$_AbilityData implements _AbilityData {
       _$$_AbilityDataFromJson(json);
 
   @override
-  final NamedApiResourceData ability;
+  final PokemonItem ability;
 
   @override
   String toString() {
@@ -150,14 +150,13 @@ class _$_AbilityData implements _AbilityData {
 }
 
 abstract class _AbilityData implements AbilityData {
-  factory _AbilityData({required final NamedApiResourceData ability}) =
-      _$_AbilityData;
+  factory _AbilityData({required final PokemonItem ability}) = _$_AbilityData;
 
   factory _AbilityData.fromJson(Map<String, dynamic> json) =
       _$_AbilityData.fromJson;
 
   @override
-  NamedApiResourceData get ability;
+  PokemonItem get ability;
   @override
   @JsonKey(ignore: true)
   _$$_AbilityDataCopyWith<_$_AbilityData> get copyWith =>

@@ -10,16 +10,16 @@ _$_PokemonData _$$_PokemonDataFromJson(Map<String, dynamic> json) =>
     _$_PokemonData(
       id: json['id'] as int,
       name: json['name'] as String,
-      height: json['height'] as int?,
+      height: json['height'] as int,
       types: (json['types'] as List<dynamic>)
-          .map((e) => NamedApiResourceData.fromJson(e as Map<String, dynamic>))
+          .map((e) => PokemonItem.fromJson(e as Map<String, dynamic>))
           .toList(),
-      imageUrl: json['imageUrl'] as String,
+      sprites: SpritesData.fromJson(json['sprites'] as Map<String, dynamic>),
       abilities: (json['abilities'] as List<dynamic>)
           .map((e) => AbilityData.fromJson(e as Map<String, dynamic>))
           .toList(),
       forms: (json['forms'] as List<dynamic>)
-          .map((e) => NamedApiResourceData.fromJson(e as Map<String, dynamic>))
+          .map((e) => PokemonItem.fromJson(e as Map<String, dynamic>))
           .toList(),
       moves: (json['moves'] as List<dynamic>)
           .map((e) => PokemonMoveData.fromJson(e as Map<String, dynamic>))
@@ -35,7 +35,7 @@ Map<String, dynamic> _$$_PokemonDataToJson(_$_PokemonData instance) =>
       'name': instance.name,
       'height': instance.height,
       'types': instance.types,
-      'imageUrl': instance.imageUrl,
+      'sprites': instance.sprites,
       'abilities': instance.abilities,
       'forms': instance.forms,
       'moves': instance.moves,

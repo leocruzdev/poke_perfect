@@ -20,7 +20,7 @@ PokemonMoveData _$PokemonMoveDataFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$PokemonMoveData {
-  NamedApiResourceData get move => throw _privateConstructorUsedError;
+  PokemonItem get move => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -34,9 +34,9 @@ abstract class $PokemonMoveDataCopyWith<$Res> {
           PokemonMoveData value, $Res Function(PokemonMoveData) then) =
       _$PokemonMoveDataCopyWithImpl<$Res, PokemonMoveData>;
   @useResult
-  $Res call({NamedApiResourceData move});
+  $Res call({PokemonItem move});
 
-  $NamedApiResourceDataCopyWith<$Res> get move;
+  $PokemonItemCopyWith<$Res> get move;
 }
 
 /// @nodoc
@@ -58,14 +58,14 @@ class _$PokemonMoveDataCopyWithImpl<$Res, $Val extends PokemonMoveData>
       move: null == move
           ? _value.move
           : move // ignore: cast_nullable_to_non_nullable
-              as NamedApiResourceData,
+              as PokemonItem,
     ) as $Val);
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $NamedApiResourceDataCopyWith<$Res> get move {
-    return $NamedApiResourceDataCopyWith<$Res>(_value.move, (value) {
+  $PokemonItemCopyWith<$Res> get move {
+    return $PokemonItemCopyWith<$Res>(_value.move, (value) {
       return _then(_value.copyWith(move: value) as $Val);
     });
   }
@@ -79,10 +79,10 @@ abstract class _$$_PokemonMoveDataCopyWith<$Res>
       __$$_PokemonMoveDataCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({NamedApiResourceData move});
+  $Res call({PokemonItem move});
 
   @override
-  $NamedApiResourceDataCopyWith<$Res> get move;
+  $PokemonItemCopyWith<$Res> get move;
 }
 
 /// @nodoc
@@ -102,7 +102,7 @@ class __$$_PokemonMoveDataCopyWithImpl<$Res>
       move: null == move
           ? _value.move
           : move // ignore: cast_nullable_to_non_nullable
-              as NamedApiResourceData,
+              as PokemonItem,
     ));
   }
 }
@@ -116,7 +116,7 @@ class _$_PokemonMoveData implements _PokemonMoveData {
       _$$_PokemonMoveDataFromJson(json);
 
   @override
-  final NamedApiResourceData move;
+  final PokemonItem move;
 
   @override
   String toString() {
@@ -150,14 +150,14 @@ class _$_PokemonMoveData implements _PokemonMoveData {
 }
 
 abstract class _PokemonMoveData implements PokemonMoveData {
-  factory _PokemonMoveData({required final NamedApiResourceData move}) =
+  factory _PokemonMoveData({required final PokemonItem move}) =
       _$_PokemonMoveData;
 
   factory _PokemonMoveData.fromJson(Map<String, dynamic> json) =
       _$_PokemonMoveData.fromJson;
 
   @override
-  NamedApiResourceData get move;
+  PokemonItem get move;
   @override
   @JsonKey(ignore: true)
   _$$_PokemonMoveDataCopyWith<_$_PokemonMoveData> get copyWith =>
