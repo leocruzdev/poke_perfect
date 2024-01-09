@@ -30,7 +30,7 @@ mixin _$Pokemon {
   int get order => throw _privateConstructorUsedError;
   int get weight => throw _privateConstructorUsedError;
   List<PokemonAbility> get abilities => throw _privateConstructorUsedError;
-  List<NamedAPIResource> get forms => throw _privateConstructorUsedError;
+  List<PokemonItem> get forms => throw _privateConstructorUsedError;
   @JsonKey(name: 'game_indices')
   List<VersionGameIndex> get gameIndices => throw _privateConstructorUsedError;
   @JsonKey(name: 'held_items')
@@ -41,7 +41,7 @@ mixin _$Pokemon {
   @JsonKey(name: 'past_types')
   List<PokemonTypePast> get pastTypes => throw _privateConstructorUsedError;
   PokemonSprites get sprites => throw _privateConstructorUsedError;
-  NamedAPIResource get species => throw _privateConstructorUsedError;
+  PokemonItem get species => throw _privateConstructorUsedError;
   List<PokemonStat> get stats => throw _privateConstructorUsedError;
   List<PokemonType> get types => throw _privateConstructorUsedError;
 
@@ -64,19 +64,19 @@ abstract class $PokemonCopyWith<$Res> {
       int order,
       int weight,
       List<PokemonAbility> abilities,
-      List<NamedAPIResource> forms,
+      List<PokemonItem> forms,
       @JsonKey(name: 'game_indices') List<VersionGameIndex> gameIndices,
       @JsonKey(name: 'held_items') List<PokemonHeldItem> heldItems,
       @JsonKey(name: 'location_area_encounters') String locationAreaEncounters,
       List<PokemonMove> moves,
       @JsonKey(name: 'past_types') List<PokemonTypePast> pastTypes,
       PokemonSprites sprites,
-      NamedAPIResource species,
+      PokemonItem species,
       List<PokemonStat> stats,
       List<PokemonType> types});
 
   $PokemonSpritesCopyWith<$Res> get sprites;
-  $NamedAPIResourceCopyWith<$Res> get species;
+  $PokemonItemCopyWith<$Res> get species;
 }
 
 /// @nodoc
@@ -147,7 +147,7 @@ class _$PokemonCopyWithImpl<$Res, $Val extends Pokemon>
       forms: null == forms
           ? _value.forms
           : forms // ignore: cast_nullable_to_non_nullable
-              as List<NamedAPIResource>,
+              as List<PokemonItem>,
       gameIndices: null == gameIndices
           ? _value.gameIndices
           : gameIndices // ignore: cast_nullable_to_non_nullable
@@ -175,7 +175,7 @@ class _$PokemonCopyWithImpl<$Res, $Val extends Pokemon>
       species: null == species
           ? _value.species
           : species // ignore: cast_nullable_to_non_nullable
-              as NamedAPIResource,
+              as PokemonItem,
       stats: null == stats
           ? _value.stats
           : stats // ignore: cast_nullable_to_non_nullable
@@ -197,8 +197,8 @@ class _$PokemonCopyWithImpl<$Res, $Val extends Pokemon>
 
   @override
   @pragma('vm:prefer-inline')
-  $NamedAPIResourceCopyWith<$Res> get species {
-    return $NamedAPIResourceCopyWith<$Res>(_value.species, (value) {
+  $PokemonItemCopyWith<$Res> get species {
+    return $PokemonItemCopyWith<$Res>(_value.species, (value) {
       return _then(_value.copyWith(species: value) as $Val);
     });
   }
@@ -220,21 +220,21 @@ abstract class _$$_PokemonCopyWith<$Res> implements $PokemonCopyWith<$Res> {
       int order,
       int weight,
       List<PokemonAbility> abilities,
-      List<NamedAPIResource> forms,
+      List<PokemonItem> forms,
       @JsonKey(name: 'game_indices') List<VersionGameIndex> gameIndices,
       @JsonKey(name: 'held_items') List<PokemonHeldItem> heldItems,
       @JsonKey(name: 'location_area_encounters') String locationAreaEncounters,
       List<PokemonMove> moves,
       @JsonKey(name: 'past_types') List<PokemonTypePast> pastTypes,
       PokemonSprites sprites,
-      NamedAPIResource species,
+      PokemonItem species,
       List<PokemonStat> stats,
       List<PokemonType> types});
 
   @override
   $PokemonSpritesCopyWith<$Res> get sprites;
   @override
-  $NamedAPIResourceCopyWith<$Res> get species;
+  $PokemonItemCopyWith<$Res> get species;
 }
 
 /// @nodoc
@@ -302,7 +302,7 @@ class __$$_PokemonCopyWithImpl<$Res>
       forms: null == forms
           ? _value._forms
           : forms // ignore: cast_nullable_to_non_nullable
-              as List<NamedAPIResource>,
+              as List<PokemonItem>,
       gameIndices: null == gameIndices
           ? _value._gameIndices
           : gameIndices // ignore: cast_nullable_to_non_nullable
@@ -330,7 +330,7 @@ class __$$_PokemonCopyWithImpl<$Res>
       species: null == species
           ? _value.species
           : species // ignore: cast_nullable_to_non_nullable
-              as NamedAPIResource,
+              as PokemonItem,
       stats: null == stats
           ? _value._stats
           : stats // ignore: cast_nullable_to_non_nullable
@@ -355,7 +355,7 @@ class _$_Pokemon implements _Pokemon {
       required this.order,
       required this.weight,
       required final List<PokemonAbility> abilities,
-      required final List<NamedAPIResource> forms,
+      required final List<PokemonItem> forms,
       @JsonKey(name: 'game_indices')
       required final List<VersionGameIndex> gameIndices,
       @JsonKey(name: 'held_items')
@@ -405,9 +405,9 @@ class _$_Pokemon implements _Pokemon {
     return EqualUnmodifiableListView(_abilities);
   }
 
-  final List<NamedAPIResource> _forms;
+  final List<PokemonItem> _forms;
   @override
-  List<NamedAPIResource> get forms {
+  List<PokemonItem> get forms {
     if (_forms is EqualUnmodifiableListView) return _forms;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_forms);
@@ -454,7 +454,7 @@ class _$_Pokemon implements _Pokemon {
   @override
   final PokemonSprites sprites;
   @override
-  final NamedAPIResource species;
+  final PokemonItem species;
   final List<PokemonStat> _stats;
   @override
   List<PokemonStat> get stats {
@@ -555,7 +555,7 @@ abstract class _Pokemon implements Pokemon {
       required final int order,
       required final int weight,
       required final List<PokemonAbility> abilities,
-      required final List<NamedAPIResource> forms,
+      required final List<PokemonItem> forms,
       @JsonKey(name: 'game_indices')
       required final List<VersionGameIndex> gameIndices,
       @JsonKey(name: 'held_items')
@@ -566,7 +566,7 @@ abstract class _Pokemon implements Pokemon {
       @JsonKey(name: 'past_types')
       required final List<PokemonTypePast> pastTypes,
       required final PokemonSprites sprites,
-      required final NamedAPIResource species,
+      required final PokemonItem species,
       required final List<PokemonStat> stats,
       required final List<PokemonType> types}) = _$_Pokemon;
 
@@ -591,7 +591,7 @@ abstract class _Pokemon implements Pokemon {
   @override
   List<PokemonAbility> get abilities;
   @override
-  List<NamedAPIResource> get forms;
+  List<PokemonItem> get forms;
   @override
   @JsonKey(name: 'game_indices')
   List<VersionGameIndex> get gameIndices;
@@ -609,7 +609,7 @@ abstract class _Pokemon implements Pokemon {
   @override
   PokemonSprites get sprites;
   @override
-  NamedAPIResource get species;
+  PokemonItem get species;
   @override
   List<PokemonStat> get stats;
   @override
@@ -629,7 +629,7 @@ mixin _$PokemonAbility {
   @JsonKey(name: 'is_hidden')
   bool get isHidden => throw _privateConstructorUsedError;
   int get slot => throw _privateConstructorUsedError;
-  NamedAPIResource get ability => throw _privateConstructorUsedError;
+  PokemonItem get ability => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -646,9 +646,9 @@ abstract class $PokemonAbilityCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: 'is_hidden') bool isHidden,
       int slot,
-      NamedAPIResource ability});
+      PokemonItem ability});
 
-  $NamedAPIResourceCopyWith<$Res> get ability;
+  $PokemonItemCopyWith<$Res> get ability;
 }
 
 /// @nodoc
@@ -680,14 +680,14 @@ class _$PokemonAbilityCopyWithImpl<$Res, $Val extends PokemonAbility>
       ability: null == ability
           ? _value.ability
           : ability // ignore: cast_nullable_to_non_nullable
-              as NamedAPIResource,
+              as PokemonItem,
     ) as $Val);
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $NamedAPIResourceCopyWith<$Res> get ability {
-    return $NamedAPIResourceCopyWith<$Res>(_value.ability, (value) {
+  $PokemonItemCopyWith<$Res> get ability {
+    return $PokemonItemCopyWith<$Res>(_value.ability, (value) {
       return _then(_value.copyWith(ability: value) as $Val);
     });
   }
@@ -704,10 +704,10 @@ abstract class _$$_PokemonAbilityCopyWith<$Res>
   $Res call(
       {@JsonKey(name: 'is_hidden') bool isHidden,
       int slot,
-      NamedAPIResource ability});
+      PokemonItem ability});
 
   @override
-  $NamedAPIResourceCopyWith<$Res> get ability;
+  $PokemonItemCopyWith<$Res> get ability;
 }
 
 /// @nodoc
@@ -737,7 +737,7 @@ class __$$_PokemonAbilityCopyWithImpl<$Res>
       ability: null == ability
           ? _value.ability
           : ability // ignore: cast_nullable_to_non_nullable
-              as NamedAPIResource,
+              as PokemonItem,
     ));
   }
 }
@@ -759,7 +759,7 @@ class _$_PokemonAbility implements _PokemonAbility {
   @override
   final int slot;
   @override
-  final NamedAPIResource ability;
+  final PokemonItem ability;
 
   @override
   String toString() {
@@ -799,7 +799,7 @@ abstract class _PokemonAbility implements PokemonAbility {
   const factory _PokemonAbility(
       {@JsonKey(name: 'is_hidden') required final bool isHidden,
       required final int slot,
-      required final NamedAPIResource ability}) = _$_PokemonAbility;
+      required final PokemonItem ability}) = _$_PokemonAbility;
 
   factory _PokemonAbility.fromJson(Map<String, dynamic> json) =
       _$_PokemonAbility.fromJson;
@@ -810,41 +810,43 @@ abstract class _PokemonAbility implements PokemonAbility {
   @override
   int get slot;
   @override
-  NamedAPIResource get ability;
+  PokemonItem get ability;
   @override
   @JsonKey(ignore: true)
   _$$_PokemonAbilityCopyWith<_$_PokemonAbility> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
-NamedAPIResource _$NamedAPIResourceFromJson(Map<String, dynamic> json) {
-  return _NamedAPIResource.fromJson(json);
+PokemonItem _$PokemonItemFromJson(Map<String, dynamic> json) {
+  return _PokemonItem.fromJson(json);
 }
 
 /// @nodoc
-mixin _$NamedAPIResource {
+mixin _$PokemonItem {
+  @HiveField(1)
   String get name => throw _privateConstructorUsedError;
+  @HiveField(2)
   String get url => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $NamedAPIResourceCopyWith<NamedAPIResource> get copyWith =>
+  $PokemonItemCopyWith<PokemonItem> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $NamedAPIResourceCopyWith<$Res> {
-  factory $NamedAPIResourceCopyWith(
-          NamedAPIResource value, $Res Function(NamedAPIResource) then) =
-      _$NamedAPIResourceCopyWithImpl<$Res, NamedAPIResource>;
+abstract class $PokemonItemCopyWith<$Res> {
+  factory $PokemonItemCopyWith(
+          PokemonItem value, $Res Function(PokemonItem) then) =
+      _$PokemonItemCopyWithImpl<$Res, PokemonItem>;
   @useResult
-  $Res call({String name, String url});
+  $Res call({@HiveField(1) String name, @HiveField(2) String url});
 }
 
 /// @nodoc
-class _$NamedAPIResourceCopyWithImpl<$Res, $Val extends NamedAPIResource>
-    implements $NamedAPIResourceCopyWith<$Res> {
-  _$NamedAPIResourceCopyWithImpl(this._value, this._then);
+class _$PokemonItemCopyWithImpl<$Res, $Val extends PokemonItem>
+    implements $PokemonItemCopyWith<$Res> {
+  _$PokemonItemCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -871,22 +873,22 @@ class _$NamedAPIResourceCopyWithImpl<$Res, $Val extends NamedAPIResource>
 }
 
 /// @nodoc
-abstract class _$$_NamedAPIResourceCopyWith<$Res>
-    implements $NamedAPIResourceCopyWith<$Res> {
-  factory _$$_NamedAPIResourceCopyWith(
-          _$_NamedAPIResource value, $Res Function(_$_NamedAPIResource) then) =
-      __$$_NamedAPIResourceCopyWithImpl<$Res>;
+abstract class _$$_PokemonItemCopyWith<$Res>
+    implements $PokemonItemCopyWith<$Res> {
+  factory _$$_PokemonItemCopyWith(
+          _$_PokemonItem value, $Res Function(_$_PokemonItem) then) =
+      __$$_PokemonItemCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String name, String url});
+  $Res call({@HiveField(1) String name, @HiveField(2) String url});
 }
 
 /// @nodoc
-class __$$_NamedAPIResourceCopyWithImpl<$Res>
-    extends _$NamedAPIResourceCopyWithImpl<$Res, _$_NamedAPIResource>
-    implements _$$_NamedAPIResourceCopyWith<$Res> {
-  __$$_NamedAPIResourceCopyWithImpl(
-      _$_NamedAPIResource _value, $Res Function(_$_NamedAPIResource) _then)
+class __$$_PokemonItemCopyWithImpl<$Res>
+    extends _$PokemonItemCopyWithImpl<$Res, _$_PokemonItem>
+    implements _$$_PokemonItemCopyWith<$Res> {
+  __$$_PokemonItemCopyWithImpl(
+      _$_PokemonItem _value, $Res Function(_$_PokemonItem) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -895,7 +897,7 @@ class __$$_NamedAPIResourceCopyWithImpl<$Res>
     Object? name = null,
     Object? url = null,
   }) {
-    return _then(_$_NamedAPIResource(
+    return _then(_$_PokemonItem(
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -910,27 +912,31 @@ class __$$_NamedAPIResourceCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_NamedAPIResource implements _NamedAPIResource {
-  const _$_NamedAPIResource({required this.name, required this.url});
+@HiveField(0)
+class _$_PokemonItem implements _PokemonItem {
+  const _$_PokemonItem(
+      {@HiveField(1) required this.name, @HiveField(2) required this.url});
 
-  factory _$_NamedAPIResource.fromJson(Map<String, dynamic> json) =>
-      _$$_NamedAPIResourceFromJson(json);
+  factory _$_PokemonItem.fromJson(Map<String, dynamic> json) =>
+      _$$_PokemonItemFromJson(json);
 
   @override
+  @HiveField(1)
   final String name;
   @override
+  @HiveField(2)
   final String url;
 
   @override
   String toString() {
-    return 'NamedAPIResource(name: $name, url: $url)';
+    return 'PokemonItem(name: $name, url: $url)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_NamedAPIResource &&
+            other is _$_PokemonItem &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.url, url) || other.url == url));
   }
@@ -942,32 +948,34 @@ class _$_NamedAPIResource implements _NamedAPIResource {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_NamedAPIResourceCopyWith<_$_NamedAPIResource> get copyWith =>
-      __$$_NamedAPIResourceCopyWithImpl<_$_NamedAPIResource>(this, _$identity);
+  _$$_PokemonItemCopyWith<_$_PokemonItem> get copyWith =>
+      __$$_PokemonItemCopyWithImpl<_$_PokemonItem>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_NamedAPIResourceToJson(
+    return _$$_PokemonItemToJson(
       this,
     );
   }
 }
 
-abstract class _NamedAPIResource implements NamedAPIResource {
-  const factory _NamedAPIResource(
-      {required final String name,
-      required final String url}) = _$_NamedAPIResource;
+abstract class _PokemonItem implements PokemonItem {
+  const factory _PokemonItem(
+      {@HiveField(1) required final String name,
+      @HiveField(2) required final String url}) = _$_PokemonItem;
 
-  factory _NamedAPIResource.fromJson(Map<String, dynamic> json) =
-      _$_NamedAPIResource.fromJson;
+  factory _PokemonItem.fromJson(Map<String, dynamic> json) =
+      _$_PokemonItem.fromJson;
 
   @override
+  @HiveField(1)
   String get name;
   @override
+  @HiveField(2)
   String get url;
   @override
   @JsonKey(ignore: true)
-  _$$_NamedAPIResourceCopyWith<_$_NamedAPIResource> get copyWith =>
+  _$$_PokemonItemCopyWith<_$_PokemonItem> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -979,7 +987,7 @@ VersionGameIndex _$VersionGameIndexFromJson(Map<String, dynamic> json) {
 mixin _$VersionGameIndex {
   @JsonKey(name: 'game_index')
   int get gameIndex => throw _privateConstructorUsedError;
-  NamedAPIResource get version => throw _privateConstructorUsedError;
+  PokemonItem get version => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -993,10 +1001,9 @@ abstract class $VersionGameIndexCopyWith<$Res> {
           VersionGameIndex value, $Res Function(VersionGameIndex) then) =
       _$VersionGameIndexCopyWithImpl<$Res, VersionGameIndex>;
   @useResult
-  $Res call(
-      {@JsonKey(name: 'game_index') int gameIndex, NamedAPIResource version});
+  $Res call({@JsonKey(name: 'game_index') int gameIndex, PokemonItem version});
 
-  $NamedAPIResourceCopyWith<$Res> get version;
+  $PokemonItemCopyWith<$Res> get version;
 }
 
 /// @nodoc
@@ -1023,14 +1030,14 @@ class _$VersionGameIndexCopyWithImpl<$Res, $Val extends VersionGameIndex>
       version: null == version
           ? _value.version
           : version // ignore: cast_nullable_to_non_nullable
-              as NamedAPIResource,
+              as PokemonItem,
     ) as $Val);
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $NamedAPIResourceCopyWith<$Res> get version {
-    return $NamedAPIResourceCopyWith<$Res>(_value.version, (value) {
+  $PokemonItemCopyWith<$Res> get version {
+    return $PokemonItemCopyWith<$Res>(_value.version, (value) {
       return _then(_value.copyWith(version: value) as $Val);
     });
   }
@@ -1044,11 +1051,10 @@ abstract class _$$_VersionGameIndexCopyWith<$Res>
       __$$_VersionGameIndexCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {@JsonKey(name: 'game_index') int gameIndex, NamedAPIResource version});
+  $Res call({@JsonKey(name: 'game_index') int gameIndex, PokemonItem version});
 
   @override
-  $NamedAPIResourceCopyWith<$Res> get version;
+  $PokemonItemCopyWith<$Res> get version;
 }
 
 /// @nodoc
@@ -1073,7 +1079,7 @@ class __$$_VersionGameIndexCopyWithImpl<$Res>
       version: null == version
           ? _value.version
           : version // ignore: cast_nullable_to_non_nullable
-              as NamedAPIResource,
+              as PokemonItem,
     ));
   }
 }
@@ -1092,7 +1098,7 @@ class _$_VersionGameIndex implements _VersionGameIndex {
   @JsonKey(name: 'game_index')
   final int gameIndex;
   @override
-  final NamedAPIResource version;
+  final PokemonItem version;
 
   @override
   String toString() {
@@ -1130,7 +1136,7 @@ class _$_VersionGameIndex implements _VersionGameIndex {
 abstract class _VersionGameIndex implements VersionGameIndex {
   const factory _VersionGameIndex(
       {@JsonKey(name: 'game_index') required final int gameIndex,
-      required final NamedAPIResource version}) = _$_VersionGameIndex;
+      required final PokemonItem version}) = _$_VersionGameIndex;
 
   factory _VersionGameIndex.fromJson(Map<String, dynamic> json) =
       _$_VersionGameIndex.fromJson;
@@ -1139,7 +1145,7 @@ abstract class _VersionGameIndex implements VersionGameIndex {
   @JsonKey(name: 'game_index')
   int get gameIndex;
   @override
-  NamedAPIResource get version;
+  PokemonItem get version;
   @override
   @JsonKey(ignore: true)
   _$$_VersionGameIndexCopyWith<_$_VersionGameIndex> get copyWith =>
@@ -1152,7 +1158,7 @@ PokemonHeldItem _$PokemonHeldItemFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$PokemonHeldItem {
-  NamedAPIResource get item => throw _privateConstructorUsedError;
+  PokemonItem get item => throw _privateConstructorUsedError;
   @JsonKey(name: 'version_details')
   List<VersionDetail> get versionDetails => throw _privateConstructorUsedError;
 
@@ -1169,10 +1175,10 @@ abstract class $PokemonHeldItemCopyWith<$Res> {
       _$PokemonHeldItemCopyWithImpl<$Res, PokemonHeldItem>;
   @useResult
   $Res call(
-      {NamedAPIResource item,
+      {PokemonItem item,
       @JsonKey(name: 'version_details') List<VersionDetail> versionDetails});
 
-  $NamedAPIResourceCopyWith<$Res> get item;
+  $PokemonItemCopyWith<$Res> get item;
 }
 
 /// @nodoc
@@ -1195,7 +1201,7 @@ class _$PokemonHeldItemCopyWithImpl<$Res, $Val extends PokemonHeldItem>
       item: null == item
           ? _value.item
           : item // ignore: cast_nullable_to_non_nullable
-              as NamedAPIResource,
+              as PokemonItem,
       versionDetails: null == versionDetails
           ? _value.versionDetails
           : versionDetails // ignore: cast_nullable_to_non_nullable
@@ -1205,8 +1211,8 @@ class _$PokemonHeldItemCopyWithImpl<$Res, $Val extends PokemonHeldItem>
 
   @override
   @pragma('vm:prefer-inline')
-  $NamedAPIResourceCopyWith<$Res> get item {
-    return $NamedAPIResourceCopyWith<$Res>(_value.item, (value) {
+  $PokemonItemCopyWith<$Res> get item {
+    return $PokemonItemCopyWith<$Res>(_value.item, (value) {
       return _then(_value.copyWith(item: value) as $Val);
     });
   }
@@ -1221,11 +1227,11 @@ abstract class _$$_PokemonHeldItemCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {NamedAPIResource item,
+      {PokemonItem item,
       @JsonKey(name: 'version_details') List<VersionDetail> versionDetails});
 
   @override
-  $NamedAPIResourceCopyWith<$Res> get item;
+  $PokemonItemCopyWith<$Res> get item;
 }
 
 /// @nodoc
@@ -1246,7 +1252,7 @@ class __$$_PokemonHeldItemCopyWithImpl<$Res>
       item: null == item
           ? _value.item
           : item // ignore: cast_nullable_to_non_nullable
-              as NamedAPIResource,
+              as PokemonItem,
       versionDetails: null == versionDetails
           ? _value._versionDetails
           : versionDetails // ignore: cast_nullable_to_non_nullable
@@ -1268,7 +1274,7 @@ class _$_PokemonHeldItem implements _PokemonHeldItem {
       _$$_PokemonHeldItemFromJson(json);
 
   @override
-  final NamedAPIResource item;
+  final PokemonItem item;
   final List<VersionDetail> _versionDetails;
   @override
   @JsonKey(name: 'version_details')
@@ -1314,7 +1320,7 @@ class _$_PokemonHeldItem implements _PokemonHeldItem {
 
 abstract class _PokemonHeldItem implements PokemonHeldItem {
   const factory _PokemonHeldItem(
-      {required final NamedAPIResource item,
+      {required final PokemonItem item,
       @JsonKey(name: 'version_details')
       required final List<VersionDetail> versionDetails}) = _$_PokemonHeldItem;
 
@@ -1322,7 +1328,7 @@ abstract class _PokemonHeldItem implements PokemonHeldItem {
       _$_PokemonHeldItem.fromJson;
 
   @override
-  NamedAPIResource get item;
+  PokemonItem get item;
   @override
   @JsonKey(name: 'version_details')
   List<VersionDetail> get versionDetails;
@@ -1339,7 +1345,7 @@ VersionDetail _$VersionDetailFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$VersionDetail {
   int get rarity => throw _privateConstructorUsedError;
-  NamedAPIResource get version => throw _privateConstructorUsedError;
+  PokemonItem get version => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -1353,9 +1359,9 @@ abstract class $VersionDetailCopyWith<$Res> {
           VersionDetail value, $Res Function(VersionDetail) then) =
       _$VersionDetailCopyWithImpl<$Res, VersionDetail>;
   @useResult
-  $Res call({int rarity, NamedAPIResource version});
+  $Res call({int rarity, PokemonItem version});
 
-  $NamedAPIResourceCopyWith<$Res> get version;
+  $PokemonItemCopyWith<$Res> get version;
 }
 
 /// @nodoc
@@ -1382,14 +1388,14 @@ class _$VersionDetailCopyWithImpl<$Res, $Val extends VersionDetail>
       version: null == version
           ? _value.version
           : version // ignore: cast_nullable_to_non_nullable
-              as NamedAPIResource,
+              as PokemonItem,
     ) as $Val);
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $NamedAPIResourceCopyWith<$Res> get version {
-    return $NamedAPIResourceCopyWith<$Res>(_value.version, (value) {
+  $PokemonItemCopyWith<$Res> get version {
+    return $PokemonItemCopyWith<$Res>(_value.version, (value) {
       return _then(_value.copyWith(version: value) as $Val);
     });
   }
@@ -1403,10 +1409,10 @@ abstract class _$$_VersionDetailCopyWith<$Res>
       __$$_VersionDetailCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int rarity, NamedAPIResource version});
+  $Res call({int rarity, PokemonItem version});
 
   @override
-  $NamedAPIResourceCopyWith<$Res> get version;
+  $PokemonItemCopyWith<$Res> get version;
 }
 
 /// @nodoc
@@ -1431,7 +1437,7 @@ class __$$_VersionDetailCopyWithImpl<$Res>
       version: null == version
           ? _value.version
           : version // ignore: cast_nullable_to_non_nullable
-              as NamedAPIResource,
+              as PokemonItem,
     ));
   }
 }
@@ -1447,7 +1453,7 @@ class _$_VersionDetail implements _VersionDetail {
   @override
   final int rarity;
   @override
-  final NamedAPIResource version;
+  final PokemonItem version;
 
   @override
   String toString() {
@@ -1484,7 +1490,7 @@ class _$_VersionDetail implements _VersionDetail {
 abstract class _VersionDetail implements VersionDetail {
   const factory _VersionDetail(
       {required final int rarity,
-      required final NamedAPIResource version}) = _$_VersionDetail;
+      required final PokemonItem version}) = _$_VersionDetail;
 
   factory _VersionDetail.fromJson(Map<String, dynamic> json) =
       _$_VersionDetail.fromJson;
@@ -1492,7 +1498,7 @@ abstract class _VersionDetail implements VersionDetail {
   @override
   int get rarity;
   @override
-  NamedAPIResource get version;
+  PokemonItem get version;
   @override
   @JsonKey(ignore: true)
   _$$_VersionDetailCopyWith<_$_VersionDetail> get copyWith =>
@@ -1505,7 +1511,7 @@ PokemonMove _$PokemonMoveFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$PokemonMove {
-  NamedAPIResource get move => throw _privateConstructorUsedError;
+  PokemonItem get move => throw _privateConstructorUsedError;
   @JsonKey(name: 'version_group_details')
   List<MoveVersionGroupDetail> get versionGroupDetails =>
       throw _privateConstructorUsedError;
@@ -1523,11 +1529,11 @@ abstract class $PokemonMoveCopyWith<$Res> {
       _$PokemonMoveCopyWithImpl<$Res, PokemonMove>;
   @useResult
   $Res call(
-      {NamedAPIResource move,
+      {PokemonItem move,
       @JsonKey(name: 'version_group_details')
       List<MoveVersionGroupDetail> versionGroupDetails});
 
-  $NamedAPIResourceCopyWith<$Res> get move;
+  $PokemonItemCopyWith<$Res> get move;
 }
 
 /// @nodoc
@@ -1550,7 +1556,7 @@ class _$PokemonMoveCopyWithImpl<$Res, $Val extends PokemonMove>
       move: null == move
           ? _value.move
           : move // ignore: cast_nullable_to_non_nullable
-              as NamedAPIResource,
+              as PokemonItem,
       versionGroupDetails: null == versionGroupDetails
           ? _value.versionGroupDetails
           : versionGroupDetails // ignore: cast_nullable_to_non_nullable
@@ -1560,8 +1566,8 @@ class _$PokemonMoveCopyWithImpl<$Res, $Val extends PokemonMove>
 
   @override
   @pragma('vm:prefer-inline')
-  $NamedAPIResourceCopyWith<$Res> get move {
-    return $NamedAPIResourceCopyWith<$Res>(_value.move, (value) {
+  $PokemonItemCopyWith<$Res> get move {
+    return $PokemonItemCopyWith<$Res>(_value.move, (value) {
       return _then(_value.copyWith(move: value) as $Val);
     });
   }
@@ -1576,12 +1582,12 @@ abstract class _$$_PokemonMoveCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {NamedAPIResource move,
+      {PokemonItem move,
       @JsonKey(name: 'version_group_details')
       List<MoveVersionGroupDetail> versionGroupDetails});
 
   @override
-  $NamedAPIResourceCopyWith<$Res> get move;
+  $PokemonItemCopyWith<$Res> get move;
 }
 
 /// @nodoc
@@ -1602,7 +1608,7 @@ class __$$_PokemonMoveCopyWithImpl<$Res>
       move: null == move
           ? _value.move
           : move // ignore: cast_nullable_to_non_nullable
-              as NamedAPIResource,
+              as PokemonItem,
       versionGroupDetails: null == versionGroupDetails
           ? _value._versionGroupDetails
           : versionGroupDetails // ignore: cast_nullable_to_non_nullable
@@ -1624,7 +1630,7 @@ class _$_PokemonMove implements _PokemonMove {
       _$$_PokemonMoveFromJson(json);
 
   @override
-  final NamedAPIResource move;
+  final PokemonItem move;
   final List<MoveVersionGroupDetail> _versionGroupDetails;
   @override
   @JsonKey(name: 'version_group_details')
@@ -1671,7 +1677,7 @@ class _$_PokemonMove implements _PokemonMove {
 
 abstract class _PokemonMove implements PokemonMove {
   const factory _PokemonMove(
-          {required final NamedAPIResource move,
+          {required final PokemonItem move,
           @JsonKey(name: 'version_group_details')
           required final List<MoveVersionGroupDetail> versionGroupDetails}) =
       _$_PokemonMove;
@@ -1680,7 +1686,7 @@ abstract class _PokemonMove implements PokemonMove {
       _$_PokemonMove.fromJson;
 
   @override
-  NamedAPIResource get move;
+  PokemonItem get move;
   @override
   @JsonKey(name: 'version_group_details')
   List<MoveVersionGroupDetail> get versionGroupDetails;
@@ -1700,9 +1706,9 @@ mixin _$MoveVersionGroupDetail {
   @JsonKey(name: 'level_learned_at')
   int get levelLearnedAt => throw _privateConstructorUsedError;
   @JsonKey(name: 'version_group')
-  NamedAPIResource get versionGroup => throw _privateConstructorUsedError;
+  PokemonItem get versionGroup => throw _privateConstructorUsedError;
   @JsonKey(name: 'move_learn_method')
-  NamedAPIResource get moveLearnMethod => throw _privateConstructorUsedError;
+  PokemonItem get moveLearnMethod => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -1718,11 +1724,11 @@ abstract class $MoveVersionGroupDetailCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: 'level_learned_at') int levelLearnedAt,
-      @JsonKey(name: 'version_group') NamedAPIResource versionGroup,
-      @JsonKey(name: 'move_learn_method') NamedAPIResource moveLearnMethod});
+      @JsonKey(name: 'version_group') PokemonItem versionGroup,
+      @JsonKey(name: 'move_learn_method') PokemonItem moveLearnMethod});
 
-  $NamedAPIResourceCopyWith<$Res> get versionGroup;
-  $NamedAPIResourceCopyWith<$Res> get moveLearnMethod;
+  $PokemonItemCopyWith<$Res> get versionGroup;
+  $PokemonItemCopyWith<$Res> get moveLearnMethod;
 }
 
 /// @nodoc
@@ -1751,26 +1757,26 @@ class _$MoveVersionGroupDetailCopyWithImpl<$Res,
       versionGroup: null == versionGroup
           ? _value.versionGroup
           : versionGroup // ignore: cast_nullable_to_non_nullable
-              as NamedAPIResource,
+              as PokemonItem,
       moveLearnMethod: null == moveLearnMethod
           ? _value.moveLearnMethod
           : moveLearnMethod // ignore: cast_nullable_to_non_nullable
-              as NamedAPIResource,
+              as PokemonItem,
     ) as $Val);
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $NamedAPIResourceCopyWith<$Res> get versionGroup {
-    return $NamedAPIResourceCopyWith<$Res>(_value.versionGroup, (value) {
+  $PokemonItemCopyWith<$Res> get versionGroup {
+    return $PokemonItemCopyWith<$Res>(_value.versionGroup, (value) {
       return _then(_value.copyWith(versionGroup: value) as $Val);
     });
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $NamedAPIResourceCopyWith<$Res> get moveLearnMethod {
-    return $NamedAPIResourceCopyWith<$Res>(_value.moveLearnMethod, (value) {
+  $PokemonItemCopyWith<$Res> get moveLearnMethod {
+    return $PokemonItemCopyWith<$Res>(_value.moveLearnMethod, (value) {
       return _then(_value.copyWith(moveLearnMethod: value) as $Val);
     });
   }
@@ -1786,13 +1792,13 @@ abstract class _$$_MoveVersionGroupDetailCopyWith<$Res>
   @useResult
   $Res call(
       {@JsonKey(name: 'level_learned_at') int levelLearnedAt,
-      @JsonKey(name: 'version_group') NamedAPIResource versionGroup,
-      @JsonKey(name: 'move_learn_method') NamedAPIResource moveLearnMethod});
+      @JsonKey(name: 'version_group') PokemonItem versionGroup,
+      @JsonKey(name: 'move_learn_method') PokemonItem moveLearnMethod});
 
   @override
-  $NamedAPIResourceCopyWith<$Res> get versionGroup;
+  $PokemonItemCopyWith<$Res> get versionGroup;
   @override
-  $NamedAPIResourceCopyWith<$Res> get moveLearnMethod;
+  $PokemonItemCopyWith<$Res> get moveLearnMethod;
 }
 
 /// @nodoc
@@ -1819,11 +1825,11 @@ class __$$_MoveVersionGroupDetailCopyWithImpl<$Res>
       versionGroup: null == versionGroup
           ? _value.versionGroup
           : versionGroup // ignore: cast_nullable_to_non_nullable
-              as NamedAPIResource,
+              as PokemonItem,
       moveLearnMethod: null == moveLearnMethod
           ? _value.moveLearnMethod
           : moveLearnMethod // ignore: cast_nullable_to_non_nullable
-              as NamedAPIResource,
+              as PokemonItem,
     ));
   }
 }
@@ -1844,10 +1850,10 @@ class _$_MoveVersionGroupDetail implements _MoveVersionGroupDetail {
   final int levelLearnedAt;
   @override
   @JsonKey(name: 'version_group')
-  final NamedAPIResource versionGroup;
+  final PokemonItem versionGroup;
   @override
   @JsonKey(name: 'move_learn_method')
-  final NamedAPIResource moveLearnMethod;
+  final PokemonItem moveLearnMethod;
 
   @override
   String toString() {
@@ -1889,12 +1895,10 @@ class _$_MoveVersionGroupDetail implements _MoveVersionGroupDetail {
 
 abstract class _MoveVersionGroupDetail implements MoveVersionGroupDetail {
   const factory _MoveVersionGroupDetail(
-          {@JsonKey(name: 'level_learned_at') required final int levelLearnedAt,
-          @JsonKey(name: 'version_group')
-          required final NamedAPIResource versionGroup,
-          @JsonKey(name: 'move_learn_method')
-          required final NamedAPIResource moveLearnMethod}) =
-      _$_MoveVersionGroupDetail;
+      {@JsonKey(name: 'level_learned_at') required final int levelLearnedAt,
+      @JsonKey(name: 'version_group') required final PokemonItem versionGroup,
+      @JsonKey(name: 'move_learn_method')
+      required final PokemonItem moveLearnMethod}) = _$_MoveVersionGroupDetail;
 
   factory _MoveVersionGroupDetail.fromJson(Map<String, dynamic> json) =
       _$_MoveVersionGroupDetail.fromJson;
@@ -1904,10 +1908,10 @@ abstract class _MoveVersionGroupDetail implements MoveVersionGroupDetail {
   int get levelLearnedAt;
   @override
   @JsonKey(name: 'version_group')
-  NamedAPIResource get versionGroup;
+  PokemonItem get versionGroup;
   @override
   @JsonKey(name: 'move_learn_method')
-  NamedAPIResource get moveLearnMethod;
+  PokemonItem get moveLearnMethod;
   @override
   @JsonKey(ignore: true)
   _$$_MoveVersionGroupDetailCopyWith<_$_MoveVersionGroupDetail> get copyWith =>
@@ -1920,7 +1924,7 @@ PokemonTypePast _$PokemonTypePastFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$PokemonTypePast {
-  NamedAPIResource get generation => throw _privateConstructorUsedError;
+  PokemonItem get generation => throw _privateConstructorUsedError;
   List<PokemonType> get types => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -1935,9 +1939,9 @@ abstract class $PokemonTypePastCopyWith<$Res> {
           PokemonTypePast value, $Res Function(PokemonTypePast) then) =
       _$PokemonTypePastCopyWithImpl<$Res, PokemonTypePast>;
   @useResult
-  $Res call({NamedAPIResource generation, List<PokemonType> types});
+  $Res call({PokemonItem generation, List<PokemonType> types});
 
-  $NamedAPIResourceCopyWith<$Res> get generation;
+  $PokemonItemCopyWith<$Res> get generation;
 }
 
 /// @nodoc
@@ -1960,7 +1964,7 @@ class _$PokemonTypePastCopyWithImpl<$Res, $Val extends PokemonTypePast>
       generation: null == generation
           ? _value.generation
           : generation // ignore: cast_nullable_to_non_nullable
-              as NamedAPIResource,
+              as PokemonItem,
       types: null == types
           ? _value.types
           : types // ignore: cast_nullable_to_non_nullable
@@ -1970,8 +1974,8 @@ class _$PokemonTypePastCopyWithImpl<$Res, $Val extends PokemonTypePast>
 
   @override
   @pragma('vm:prefer-inline')
-  $NamedAPIResourceCopyWith<$Res> get generation {
-    return $NamedAPIResourceCopyWith<$Res>(_value.generation, (value) {
+  $PokemonItemCopyWith<$Res> get generation {
+    return $PokemonItemCopyWith<$Res>(_value.generation, (value) {
       return _then(_value.copyWith(generation: value) as $Val);
     });
   }
@@ -1985,10 +1989,10 @@ abstract class _$$_PokemonTypePastCopyWith<$Res>
       __$$_PokemonTypePastCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({NamedAPIResource generation, List<PokemonType> types});
+  $Res call({PokemonItem generation, List<PokemonType> types});
 
   @override
-  $NamedAPIResourceCopyWith<$Res> get generation;
+  $PokemonItemCopyWith<$Res> get generation;
 }
 
 /// @nodoc
@@ -2009,7 +2013,7 @@ class __$$_PokemonTypePastCopyWithImpl<$Res>
       generation: null == generation
           ? _value.generation
           : generation // ignore: cast_nullable_to_non_nullable
-              as NamedAPIResource,
+              as PokemonItem,
       types: null == types
           ? _value._types
           : types // ignore: cast_nullable_to_non_nullable
@@ -2029,7 +2033,7 @@ class _$_PokemonTypePast implements _PokemonTypePast {
       _$$_PokemonTypePastFromJson(json);
 
   @override
-  final NamedAPIResource generation;
+  final PokemonItem generation;
   final List<PokemonType> _types;
   @override
   List<PokemonType> get types {
@@ -2074,14 +2078,14 @@ class _$_PokemonTypePast implements _PokemonTypePast {
 
 abstract class _PokemonTypePast implements PokemonTypePast {
   const factory _PokemonTypePast(
-      {required final NamedAPIResource generation,
+      {required final PokemonItem generation,
       required final List<PokemonType> types}) = _$_PokemonTypePast;
 
   factory _PokemonTypePast.fromJson(Map<String, dynamic> json) =
       _$_PokemonTypePast.fromJson;
 
   @override
-  NamedAPIResource get generation;
+  PokemonItem get generation;
   @override
   List<PokemonType> get types;
   @override
@@ -2242,7 +2246,7 @@ mixin _$PokemonStat {
   @JsonKey(name: 'base_stat')
   int get baseStat => throw _privateConstructorUsedError;
   int get effort => throw _privateConstructorUsedError;
-  NamedAPIResource get stat => throw _privateConstructorUsedError;
+  PokemonItem get stat => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -2257,11 +2261,9 @@ abstract class $PokemonStatCopyWith<$Res> {
       _$PokemonStatCopyWithImpl<$Res, PokemonStat>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'base_stat') int baseStat,
-      int effort,
-      NamedAPIResource stat});
+      {@JsonKey(name: 'base_stat') int baseStat, int effort, PokemonItem stat});
 
-  $NamedAPIResourceCopyWith<$Res> get stat;
+  $PokemonItemCopyWith<$Res> get stat;
 }
 
 /// @nodoc
@@ -2293,14 +2295,14 @@ class _$PokemonStatCopyWithImpl<$Res, $Val extends PokemonStat>
       stat: null == stat
           ? _value.stat
           : stat // ignore: cast_nullable_to_non_nullable
-              as NamedAPIResource,
+              as PokemonItem,
     ) as $Val);
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $NamedAPIResourceCopyWith<$Res> get stat {
-    return $NamedAPIResourceCopyWith<$Res>(_value.stat, (value) {
+  $PokemonItemCopyWith<$Res> get stat {
+    return $PokemonItemCopyWith<$Res>(_value.stat, (value) {
       return _then(_value.copyWith(stat: value) as $Val);
     });
   }
@@ -2315,12 +2317,10 @@ abstract class _$$_PokemonStatCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'base_stat') int baseStat,
-      int effort,
-      NamedAPIResource stat});
+      {@JsonKey(name: 'base_stat') int baseStat, int effort, PokemonItem stat});
 
   @override
-  $NamedAPIResourceCopyWith<$Res> get stat;
+  $PokemonItemCopyWith<$Res> get stat;
 }
 
 /// @nodoc
@@ -2350,7 +2350,7 @@ class __$$_PokemonStatCopyWithImpl<$Res>
       stat: null == stat
           ? _value.stat
           : stat // ignore: cast_nullable_to_non_nullable
-              as NamedAPIResource,
+              as PokemonItem,
     ));
   }
 }
@@ -2372,7 +2372,7 @@ class _$_PokemonStat implements _PokemonStat {
   @override
   final int effort;
   @override
-  final NamedAPIResource stat;
+  final PokemonItem stat;
 
   @override
   String toString() {
@@ -2412,7 +2412,7 @@ abstract class _PokemonStat implements PokemonStat {
   const factory _PokemonStat(
       {@JsonKey(name: 'base_stat') required final int baseStat,
       required final int effort,
-      required final NamedAPIResource stat}) = _$_PokemonStat;
+      required final PokemonItem stat}) = _$_PokemonStat;
 
   factory _PokemonStat.fromJson(Map<String, dynamic> json) =
       _$_PokemonStat.fromJson;
@@ -2423,7 +2423,7 @@ abstract class _PokemonStat implements PokemonStat {
   @override
   int get effort;
   @override
-  NamedAPIResource get stat;
+  PokemonItem get stat;
   @override
   @JsonKey(ignore: true)
   _$$_PokemonStatCopyWith<_$_PokemonStat> get copyWith =>
@@ -2437,7 +2437,7 @@ PokemonType _$PokemonTypeFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$PokemonType {
   int get slot => throw _privateConstructorUsedError;
-  NamedAPIResource get type => throw _privateConstructorUsedError;
+  PokemonItem get type => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -2451,9 +2451,9 @@ abstract class $PokemonTypeCopyWith<$Res> {
           PokemonType value, $Res Function(PokemonType) then) =
       _$PokemonTypeCopyWithImpl<$Res, PokemonType>;
   @useResult
-  $Res call({int slot, NamedAPIResource type});
+  $Res call({int slot, PokemonItem type});
 
-  $NamedAPIResourceCopyWith<$Res> get type;
+  $PokemonItemCopyWith<$Res> get type;
 }
 
 /// @nodoc
@@ -2480,14 +2480,14 @@ class _$PokemonTypeCopyWithImpl<$Res, $Val extends PokemonType>
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
-              as NamedAPIResource,
+              as PokemonItem,
     ) as $Val);
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $NamedAPIResourceCopyWith<$Res> get type {
-    return $NamedAPIResourceCopyWith<$Res>(_value.type, (value) {
+  $PokemonItemCopyWith<$Res> get type {
+    return $PokemonItemCopyWith<$Res>(_value.type, (value) {
       return _then(_value.copyWith(type: value) as $Val);
     });
   }
@@ -2501,10 +2501,10 @@ abstract class _$$_PokemonTypeCopyWith<$Res>
       __$$_PokemonTypeCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int slot, NamedAPIResource type});
+  $Res call({int slot, PokemonItem type});
 
   @override
-  $NamedAPIResourceCopyWith<$Res> get type;
+  $PokemonItemCopyWith<$Res> get type;
 }
 
 /// @nodoc
@@ -2529,7 +2529,7 @@ class __$$_PokemonTypeCopyWithImpl<$Res>
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
-              as NamedAPIResource,
+              as PokemonItem,
     ));
   }
 }
@@ -2545,7 +2545,7 @@ class _$_PokemonType implements _PokemonType {
   @override
   final int slot;
   @override
-  final NamedAPIResource type;
+  final PokemonItem type;
 
   @override
   String toString() {
@@ -2582,7 +2582,7 @@ class _$_PokemonType implements _PokemonType {
 abstract class _PokemonType implements PokemonType {
   const factory _PokemonType(
       {required final int slot,
-      required final NamedAPIResource type}) = _$_PokemonType;
+      required final PokemonItem type}) = _$_PokemonType;
 
   factory _PokemonType.fromJson(Map<String, dynamic> json) =
       _$_PokemonType.fromJson;
@@ -2590,7 +2590,7 @@ abstract class _PokemonType implements PokemonType {
   @override
   int get slot;
   @override
-  NamedAPIResource get type;
+  PokemonItem get type;
   @override
   @JsonKey(ignore: true)
   _$$_PokemonTypeCopyWith<_$_PokemonType> get copyWith =>

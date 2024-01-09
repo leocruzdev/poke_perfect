@@ -1,5 +1,3 @@
-import 'package:poke_perfect/detail/domain/model/pokemon_detail_model.dart';
-
 abstract class PokemonDetailState {}
 
 class PokemonDetailInitial extends PokemonDetailState {}
@@ -7,7 +5,7 @@ class PokemonDetailInitial extends PokemonDetailState {}
 class PokemonDetailLoading extends PokemonDetailState {}
 
 class PokemonDetailLoaded extends PokemonDetailState {
-  final PokemonDetail pokemonDetail;
+  final void pokemonDetail;
   PokemonDetailLoaded(this.pokemonDetail);
 }
 

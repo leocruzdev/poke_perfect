@@ -1,5 +1,4 @@
 import 'package:equatable/equatable.dart';
-import 'package:poke_perfect/home/domain/model/pokemon_model.dart';
 import 'package:poke_perfect/shared_model/pokemon_domain.dart';
 
 abstract class HomeState extends Equatable {
@@ -13,7 +12,7 @@ class HomeInitial extends HomeState {}
 class HomeLoading extends HomeState {}
 
 class HomeLoaded extends HomeState {
-  final List<Pokemon> pokemons;
+  final List<PokemonItemDomain> pokemons;
   final Map<String, PokemonDomain> pokemonDetails;
 
   const HomeLoaded(this.pokemons, this.pokemonDetails);
@@ -22,7 +21,7 @@ class HomeLoaded extends HomeState {
 }
 
 class HomeLoadMore extends HomeState {
-  final List<Pokemon> pokemons;
+  final List<PokemonItemDomain> pokemons;
 
   final bool isMax;
 

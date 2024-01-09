@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:hive/hive.dart';
 
 part 'pokemon.freezed.dart';
 part 'pokemon.g.dart';
@@ -14,7 +15,7 @@ class Pokemon with _$Pokemon {
     required int order,
     required int weight,
     required List<PokemonAbility> abilities,
-    required List<NamedAPIResource> forms,
+    required List<PokemonItem> forms,
     @JsonKey(name: 'game_indices') required List<VersionGameIndex> gameIndices,
     @JsonKey(name: 'held_items') required List<PokemonHeldItem> heldItems,
     @JsonKey(name: 'location_area_encounters')
@@ -22,7 +23,7 @@ class Pokemon with _$Pokemon {
     required List<PokemonMove> moves,
     @JsonKey(name: 'past_types') required List<PokemonTypePast> pastTypes,
     required PokemonSprites sprites,
-    required NamedAPIResource species,
+    required PokemonItem species,
     required List<PokemonStat> stats,
     required List<PokemonType> types,
   }) = _Pokemon;
@@ -36,29 +37,44 @@ class PokemonAbility with _$PokemonAbility {
   const factory PokemonAbility({
     @JsonKey(name: 'is_hidden') required bool isHidden,
     required int slot,
-    required NamedAPIResource ability,
+    required PokemonItem ability,
   }) = _PokemonAbility;
 
   factory PokemonAbility.fromJson(Map<String, dynamic> json) =>
       _$PokemonAbilityFromJson(json);
 }
 
-@freezed
-class NamedAPIResource with _$NamedAPIResource {
-  const factory NamedAPIResource({
-    required String name,
-    required String url,
-  }) = _NamedAPIResource;
+// @HiveType(typeId: 0)
+// @freezed
+// class PokemonItem with _$PokemonItem {
+//   @HiveField(0)
+//   factory PokemonItem({
+//     @HiveField(1) required String name,
+//     @HiveField(2) required String url,
+//   }) = _PokemonItem;
 
-  factory NamedAPIResource.fromJson(Map<String, dynamic> json) =>
-      _$NamedAPIResourceFromJson(json);
+//   factory PokemonItem.fromJson(Map<String, dynamic> json) =>
+//       _$PokemonItemFromJson(json);
+// }
+
+@HiveType(typeId: 0)
+@freezed
+class PokemonItem with _$PokemonItem {
+  @HiveField(0)
+  const factory PokemonItem({
+    @HiveField(1) required String name,
+    @HiveField(2) required String url,
+  }) = _PokemonItem;
+
+  factory PokemonItem.fromJson(Map<String, dynamic> json) =>
+      _$PokemonItemFromJson(json);
 }
 
 @freezed
 class VersionGameIndex with _$VersionGameIndex {
   const factory VersionGameIndex({
     @JsonKey(name: 'game_index') required int gameIndex,
-    required NamedAPIResource version,
+    required PokemonItem version,
   }) = _VersionGameIndex;
 
   factory VersionGameIndex.fromJson(Map<String, dynamic> json) =>
@@ -68,7 +84,7 @@ class VersionGameIndex with _$VersionGameIndex {
 @freezed
 class PokemonHeldItem with _$PokemonHeldItem {
   const factory PokemonHeldItem({
-    required NamedAPIResource item,
+    required PokemonItem item,
     @JsonKey(name: 'version_details')
     required List<VersionDetail> versionDetails,
   }) = _PokemonHeldItem;
@@ -81,7 +97,7 @@ class PokemonHeldItem with _$PokemonHeldItem {
 class VersionDetail with _$VersionDetail {
   const factory VersionDetail({
     required int rarity,
-    required NamedAPIResource version,
+    required PokemonItem version,
   }) = _VersionDetail;
 
   factory VersionDetail.fromJson(Map<String, dynamic> json) =>
@@ -91,7 +107,7 @@ class VersionDetail with _$VersionDetail {
 @freezed
 class PokemonMove with _$PokemonMove {
   const factory PokemonMove({
-    required NamedAPIResource move,
+    required PokemonItem move,
     @JsonKey(name: 'version_group_details')
     required List<MoveVersionGroupDetail> versionGroupDetails,
   }) = _PokemonMove;
@@ -104,9 +120,8 @@ class PokemonMove with _$PokemonMove {
 class MoveVersionGroupDetail with _$MoveVersionGroupDetail {
   const factory MoveVersionGroupDetail({
     @JsonKey(name: 'level_learned_at') required int levelLearnedAt,
-    @JsonKey(name: 'version_group') required NamedAPIResource versionGroup,
-    @JsonKey(name: 'move_learn_method')
-    required NamedAPIResource moveLearnMethod,
+    @JsonKey(name: 'version_group') required PokemonItem versionGroup,
+    @JsonKey(name: 'move_learn_method') required PokemonItem moveLearnMethod,
   }) = _MoveVersionGroupDetail;
 
   factory MoveVersionGroupDetail.fromJson(Map<String, dynamic> json) =>
@@ -116,7 +131,7 @@ class MoveVersionGroupDetail with _$MoveVersionGroupDetail {
 @freezed
 class PokemonTypePast with _$PokemonTypePast {
   const factory PokemonTypePast({
-    required NamedAPIResource generation,
+    required PokemonItem generation,
     required List<PokemonType> types,
   }) = _PokemonTypePast;
 
@@ -139,7 +154,7 @@ class PokemonStat with _$PokemonStat {
   const factory PokemonStat({
     @JsonKey(name: 'base_stat') required int baseStat,
     required int effort,
-    required NamedAPIResource stat,
+    required PokemonItem stat,
   }) = _PokemonStat;
 
   factory PokemonStat.fromJson(Map<String, dynamic> json) =>
@@ -150,7 +165,7 @@ class PokemonStat with _$PokemonStat {
 class PokemonType with _$PokemonType {
   const factory PokemonType({
     required int slot,
-    required NamedAPIResource type,
+    required PokemonItem type,
   }) = _PokemonType;
 
   factory PokemonType.fromJson(Map<String, dynamic> json) =>

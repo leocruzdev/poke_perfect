@@ -2,7 +2,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:injectable/injectable.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:poke_perfect/home/data/model/pokemon_list_model.dart';
-import 'package:poke_perfect/shared_model/model/pokemon_item_data.dart';
+import 'package:poke_perfect/shared_model/pokemon.dart';
 
 @module
 abstract class HiveModule {

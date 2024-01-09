@@ -1,6 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
-import 'package:poke_perfect/home/domain/model/pokemon_model.dart';
 import 'package:poke_perfect/home/domain/usecase/get_pokemon_detail.dart';
 import 'package:poke_perfect/home/domain/usecase/get_pokemon_image.dart';
 import 'package:poke_perfect/home/domain/usecase/get_pokemons.dart';
@@ -14,7 +13,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   final GetPokemonImage getPokemonImage = GetIt.I<GetPokemonImage>();
   final GetPokemonDetail getPokemonDetail = GetIt.I<GetPokemonDetail>();
 
-  List<Pokemon> allPokemons = [];
+  List<PokemonItemDomain> allPokemons = [];
   String? nextUrl;
   bool isLoadingNextPage = false;
   Map<String, String> imageCache = {};

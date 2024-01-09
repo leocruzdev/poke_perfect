@@ -7,14 +7,14 @@ class PokemonDomain {
   final int order;
   final int weight;
   final List<PokemonAbilityDomain> abilities;
-  final List<NamedAPIResourceDomain> forms;
+  final List<PokemonItemDomain> forms;
   final List<VersionGameIndexDomain> gameIndices;
   final List<PokemonHeldItemDomain> heldItems;
   final String locationAreaEncounters;
   final List<PokemonMoveDomain> moves;
   final List<PokemonTypePastDomain> pastTypes;
   final PokemonSpritesDomain sprites;
-  final NamedAPIResourceDomain species;
+  final PokemonItemDomain species;
   final List<PokemonStatDomain> stats;
   final List<PokemonTypeDomain> types;
 
@@ -43,7 +43,7 @@ class PokemonDomain {
 class PokemonAbilityDomain {
   final bool isHidden;
   final int slot;
-  final NamedAPIResourceDomain ability;
+  final PokemonItemDomain ability;
 
   PokemonAbilityDomain({
     required this.isHidden,
@@ -52,11 +52,11 @@ class PokemonAbilityDomain {
   });
 }
 
-class NamedAPIResourceDomain {
+class PokemonItemDomain {
   final String name;
   final String url;
 
-  NamedAPIResourceDomain({
+  PokemonItemDomain({
     required this.name,
     required this.url,
   });
@@ -64,7 +64,7 @@ class NamedAPIResourceDomain {
 
 class VersionGameIndexDomain {
   final int gameIndex;
-  final NamedAPIResourceDomain version;
+  final PokemonItemDomain version;
 
   VersionGameIndexDomain({
     required this.gameIndex,
@@ -73,7 +73,7 @@ class VersionGameIndexDomain {
 }
 
 class PokemonHeldItemDomain {
-  final NamedAPIResourceDomain item;
+  final PokemonItemDomain item;
   final List<VersionDetailDomain> versionDetailsDomain;
 
   PokemonHeldItemDomain({
@@ -84,7 +84,7 @@ class PokemonHeldItemDomain {
 
 class VersionDetailDomain {
   final int rarity;
-  final NamedAPIResourceDomain version;
+  final PokemonItemDomain version;
 
   VersionDetailDomain({
     required this.rarity,
@@ -93,7 +93,7 @@ class VersionDetailDomain {
 }
 
 class PokemonMoveDomain {
-  final NamedAPIResourceDomain move;
+  final PokemonItemDomain move;
   final List<MoveVersionGroupDetailDomain> versionGroupDetails;
 
   PokemonMoveDomain({
@@ -104,8 +104,8 @@ class PokemonMoveDomain {
 
 class MoveVersionGroupDetailDomain {
   final int levelLearnedAt;
-  final NamedAPIResourceDomain versionGroup;
-  final NamedAPIResourceDomain moveLearnMethod;
+  final PokemonItemDomain versionGroup;
+  final PokemonItemDomain moveLearnMethod;
 
   MoveVersionGroupDetailDomain({
     required this.levelLearnedAt,
@@ -115,7 +115,7 @@ class MoveVersionGroupDetailDomain {
 }
 
 class PokemonTypePastDomain {
-  final NamedAPIResourceDomain generation;
+  final PokemonItemDomain generation;
   final List<PokemonTypeDomain> types;
 
   PokemonTypePastDomain({
@@ -135,7 +135,7 @@ class PokemonSpritesDomain {
 class PokemonStatDomain {
   final int baseStat;
   final int effort;
-  final NamedAPIResourceDomain stat;
+  final PokemonItemDomain stat;
 
   PokemonStatDomain({
     required this.baseStat,
@@ -146,7 +146,7 @@ class PokemonStatDomain {
 
 class PokemonTypeDomain {
   final int slot;
-  final NamedAPIResourceDomain type;
+  final PokemonItemDomain type;
 
   PokemonTypeDomain({
     required this.slot,

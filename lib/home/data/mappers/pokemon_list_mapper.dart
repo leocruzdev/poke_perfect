@@ -1,6 +1,6 @@
-import 'package:poke_perfect/home/data/mappers/pokemon_item_mapper.dart';
 import 'package:poke_perfect/home/data/model/pokemon_list_model.dart';
 import 'package:poke_perfect/home/domain/model/pokemon_list_model.dart';
+import 'package:poke_perfect/shared_model/mapper.dart';
 
 extension PokemonListModelMapper on PokemonListModel {
   PokemonList toDomain() {

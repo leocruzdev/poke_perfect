@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
-import 'package:poke_perfect/home/domain/model/pokemon_model.dart';
 import 'package:poke_perfect/home/presentation/bloc/home_bloc.dart';
 import 'package:poke_perfect/home/presentation/bloc/home_event.dart';
 import 'package:poke_perfect/home/presentation/bloc/home_state.dart';
 import 'package:poke_perfect/platform/navigator/navigator.dart';
 import 'package:poke_perfect/platform/navigator/routes.dart';
+import 'package:poke_perfect/shared_model/pokemon_domain.dart';
 
 class PokemonListItem extends StatelessWidget {
-  final Pokemon pokemon;
+  final PokemonItemDomain pokemon;
 
   const PokemonListItem({Key? key, required this.pokemon}) : super(key: key);
 
