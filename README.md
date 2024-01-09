@@ -29,6 +29,11 @@ Poke_Perfect é um projeto desenvolvido em Flutter, obtém dados detalhados sobr
 - **Modo Offline**: Acessar informações essenciais dos Pokémons sem necessidade de conexão à internet.
 - **Personalização de Interface**: Opções para customizar a interface do usuário conforme as preferências dos usuários.
 
+
+## Gerando Arquivos com Build Runner
+Para gerar arquivos necessários para o Freezed, Hive e GetIt com Injectable, execute o seguinte comando no terminal do seu projeto:
+```bash flutter pub run build_runner build --delete-conflicting-outputs```
+
 ## Como Contribuir
 Contribuições são sempre bem-vindas! Para contribuir:
 1. Faça um fork do repositório.
