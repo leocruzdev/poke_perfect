@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:poke_perfect/detail/domain/model/pokemon_detail_model.dart';
 import 'package:poke_perfect/detail/presentation/page/widgets/pokemon_property_widget.dart';
+import 'package:poke_perfect/shared_model/pokemon_domain.dart';
 
 class PokemonPropertiesGrid extends StatelessWidget {
-  final PokemonDetail pokemonDetail;
+  final PokemonDomain pokemonDetail;
   const PokemonPropertiesGrid({super.key, required this.pokemonDetail});
 
   @override
@@ -12,13 +12,6 @@ class PokemonPropertiesGrid extends StatelessWidget {
       {'title': 'ID', 'value': pokemonDetail.id.toString()},
       {'title': 'Nome', 'value': pokemonDetail.name},
       {'title': 'Tamanho', 'value': '${pokemonDetail.height}cm'},
-      {'title': 'Tipo(s)', 'value': pokemonDetail.types.join(', ')},
-      {'title': 'Habilidades', 'value': pokemonDetail.abilities.join(', ')},
-      {'title': 'Formas', 'value': pokemonDetail.forms.join(', ')},
-      {'title': 'Ataques', 'value': pokemonDetail.moves.join(', ')},
-      ...pokemonDetail.stats.entries
-          .map((entry) => {'title': entry.key, 'value': entry.value.toString()})
-          .toList(),
     ];
 
     return GridView.builder(

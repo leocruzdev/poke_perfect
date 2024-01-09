@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:poke_perfect/detail/domain/model/pokemon_detail_model.dart';
 import 'package:poke_perfect/detail/presentation/page/widgets/pokemons_detail_grid_widget.dart';
+import 'package:poke_perfect/shared_model/pokemon_domain.dart';
 
 class PokemonDetailExpansion extends StatefulWidget {
-  final PokemonDetail pokemonDetail;
+  final PokemonDomain pokemonDetail;
 
   const PokemonDetailExpansion({Key? key, required this.pokemonDetail})
       : super(key: key);

@@ -1,6 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
-import 'package:poke_perfect/detail/domain/model/pokemon_detail_model.dart';
 import 'package:poke_perfect/home/domain/model/pokemon_model.dart';
 import 'package:poke_perfect/home/domain/usecase/get_pokemon_detail.dart';
 import 'package:poke_perfect/home/domain/usecase/get_pokemon_image.dart';
@@ -8,6 +7,7 @@ import 'package:poke_perfect/home/domain/usecase/get_pokemons.dart';
 import 'package:poke_perfect/home/presentation/bloc/home_event.dart';
 import 'package:poke_perfect/home/presentation/bloc/home_state.dart';
 import 'package:poke_perfect/platform/logger/logger_service.dart';
+import 'package:poke_perfect/shared_model/pokemon_domain.dart';
 
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
   final GetAllPokemons getAllPokemons = GetIt.I<GetAllPokemons>();
@@ -15,10 +15,10 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   final GetPokemonDetail getPokemonDetail = GetIt.I<GetPokemonDetail>();
 
   List<Pokemon> allPokemons = [];
-  List<PokemonDetail> allPokemonsDetail = [];
   String? nextUrl;
   bool isLoadingNextPage = false;
   Map<String, String> imageCache = {};
+  Map<String, PokemonDomain> pokemonDetails = {};
 
   HomeBloc() : super(HomeInitial()) {
     on<FetchPokemons>(_onFetchPokemons);
@@ -36,7 +36,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
 
       allPokemons.addAll(pokemonListModel.pokemons);
       nextUrl = pokemonListModel.next;
-      emit(HomeLoaded(allPokemons));
+      emit(HomeLoaded(allPokemons, pokemonDetails));
       LoggerService.logDebug(
           'HomeLoaded emitted with ${allPokemons.length} pokemons');
     } catch (e) {
@@ -55,7 +55,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
         final pokemonListModel = await getAllPokemons(url: nextUrl);
         allPokemons += (pokemonListModel.pokemons);
         nextUrl = pokemonListModel.next;
-        emit(HomeLoaded(allPokemons));
+        emit(HomeLoaded(allPokemons, pokemonDetails));
         LoggerService.logDebug(
             'Loaded additional Pokemon, total: ${allPokemons.length}');
       } catch (e) {
@@ -77,27 +77,12 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     }
 
     try {
-      final imageUrl = await getPokemonImage(event.imageUrl);
-      imageCache[event.imageUrl] = imageUrl;
-      emit(HomeLoaded(allPokemons));
+      final pokemonDetail = await getPokemonDetail(event.imageUrl);
+      pokemonDetails[event.imageUrl] = pokemonDetail;
+      imageCache[event.imageUrl] = pokemonDetail.sprites.frontDefault;
+      emit(HomeLoaded(allPokemons, pokemonDetails));
     } catch (e) {
       LoggerService.logDebug('Error occurred in _onLoadImagePokemon: $e');
     }
   }
-
-  //TODO: Implementar o carregamento dos detalhes do Pokemon ao invés de apenas a imagem
-  // Future<void> _onLoadImagePokemon(
-  //     LoadImagePokemon event, Emitter<HomeState> emit) async {
-  //   if (imageCache.containsKey(event.imageUrl)) {
-  //     return;
-  //   }
-
-  //   try {
-  //     final pokemonDetail = await getPokemonDetail(event.imageUrl);
-  //     imageCache[event.imageUrl] = pokemonDetail.name;
-  //     emit(HomeLoaded(allPokemons));
-  //   } catch (e) {
-  //     LoggerService.logDebug('Error occurred in _onLoadImagePokemon: $e');
-  //   }
-  // }
 }

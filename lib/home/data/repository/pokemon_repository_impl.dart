@@ -4,7 +4,7 @@ import 'package:poke_perfect/home/data/datasource/remote_data_source.dart';
 import 'package:poke_perfect/home/data/model/pokemon_list_model.dart';
 import 'package:poke_perfect/home/domain/pokemon_repository.dart';
 import 'package:poke_perfect/platform/logger/logger_service.dart';
-import 'package:poke_perfect/shared_model/model/pokemon_data.dart';
+import 'package:poke_perfect/shared_model/pokemon.dart';
 
 @Injectable(as: PokemonRepository)
 class PokemonRepositoryImpl implements PokemonRepository {
@@ -56,11 +56,13 @@ class PokemonRepositoryImpl implements PokemonRepository {
   }
 
   @override
-  Future<PokemonData> fetchPokemonDetail(String detailsUrl) async {
+  Future<Pokemon> fetchPokemonDetail(String detailsUrl) async {
     try {
       LoggerService.logDebug(
           'Fetching pokemon image from: $detailsUrl'); // Log de início de busca de imagem
-      return await remoteDataSource.fetchPokemonDetail(detailsUrl);
+      final response = await remoteDataSource.fetchPokemonDetail(detailsUrl);
+
+      return response;
       // Log de sucesso não é necessário aqui, pois se chegar a essa linha, não houve exceção
     } catch (e) {
       LoggerService.logDebug('Failed to load pokemon image: $e'); // Log de erro

@@ -54,6 +54,7 @@ class PokemonListView extends StatelessWidget {
             ? state.pokemons
             : (state is HomeLoadMore ? state.pokemons : []);
         final isLoadMore = state is HomeLoadMore && !state.isMax;
+
         return NotificationListener<ScrollNotification>(
           onNotification: (scrollInfo) {
             if (scrollInfo.metrics.pixels ==
@@ -74,6 +75,7 @@ class PokemonListView extends StatelessWidget {
                 );
               }
               final pokemon = pokemons[index];
+
               return PokemonListItem(pokemon: pokemon);
             },
           ),
