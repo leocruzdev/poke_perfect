@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:poke_perfect/detail/presentation/page/widgets/pokemons_detail_grid_widget.dart';
 import 'package:poke_perfect/shared_model/pokemon_detail_domain.dart';
 
@@ -51,9 +52,10 @@ class _PokemonDetailExpansionState extends State<PokemonDetailExpansion>
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                const Text(
+                Text(
                   'Ver características',
-                  style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
+                  style:
+                      TextStyle(fontSize: 18.sp, fontWeight: FontWeight.bold),
                 ),
                 RotationTransition(
                   turns: _sizeAnimation,
@@ -67,7 +69,7 @@ class _PokemonDetailExpansionState extends State<PokemonDetailExpansion>
           axisAlignment: 1.0,
           sizeFactor: _sizeAnimation,
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 15.0),
+            padding: EdgeInsets.symmetric(horizontal: 15.w),
             child: PokemonPropertiesGrid(pokemonDetail: widget.pokemonDetail),
           ),
         ),

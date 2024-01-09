@@ -20,9 +20,8 @@ class DetailPage extends StatelessWidget {
         leadingIcon: Icons.arrow_back_ios_outlined,
         title: 'Detalhes de ${pokemonDetail.name}',
       ),
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.all(16),
-        child: Column(
+      body: ListView(padding: const EdgeInsets.all(16), children: [
+        Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Center(
@@ -31,7 +30,7 @@ class DetailPage extends StatelessWidget {
             PokemonDetailExpansion(pokemonDetail: pokemonDetail),
           ],
         ),
-      ),
+      ]),
       backgroundColor: Colors.grey[200],
     );
   }

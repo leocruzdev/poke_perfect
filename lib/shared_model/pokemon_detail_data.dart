@@ -44,19 +44,6 @@ class PokemonAbility with _$PokemonAbility {
       _$PokemonAbilityFromJson(json);
 }
 
-// @HiveType(typeId: 0)
-// @freezed
-// class PokemonItem with _$PokemonItem {
-//   @HiveField(0)
-//   factory PokemonItem({
-//     @HiveField(1) required String name,
-//     @HiveField(2) required String url,
-//   }) = _PokemonItem;
-
-//   factory PokemonItem.fromJson(Map<String, dynamic> json) =>
-//       _$PokemonItemFromJson(json);
-// }
-
 @HiveType(typeId: 0)
 @freezed
 class PokemonItem with _$PokemonItem {

@@ -12,6 +12,24 @@ class PokemonPropertiesGrid extends StatelessWidget {
       {'title': 'ID', 'value': pokemonDetail.id.toString()},
       {'title': 'Nome', 'value': pokemonDetail.name},
       {'title': 'Tamanho', 'value': '${pokemonDetail.height}cm'},
+      {
+        'title': 'Tipo(s)',
+        'value': pokemonDetail.types.map((t) => t.type.name).join(', ')
+      },
+      {
+        'title': 'Habilidades',
+        'value': pokemonDetail.abilities.map((a) => a.ability.name).join(', ')
+      },
+      {
+        'title': 'Formas',
+        'value': pokemonDetail.forms.map((f) => f.name).join(', ')
+      },
+      {
+        'title': 'Ataques',
+        'value': pokemonDetail.moves.map((m) => m.move.name).join(', ')
+      },
+      ...pokemonDetail.stats
+          .map((s) => {'title': s.stat.name, 'value': s.baseStat.toString()}),
     ];
 
     return GridView.builder(
