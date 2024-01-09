@@ -8,3 +8,12 @@ abstract class HomeEvent extends Equatable {
 class FetchPokemons extends HomeEvent {}
 
 class LoadNextPagePokemons extends HomeEvent {}
+
+class LoadImagePokemon extends HomeEvent {
+  final String imageUrl;
+
+  LoadImagePokemon(this.imageUrl);
+
+  @override
+  List<Object> get props => [imageUrl];
+}

@@ -1,6 +1,8 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
+import 'package:poke_perfect/detail/domain/model/pokemon_detail_model.dart';
 import 'package:poke_perfect/home/domain/model/pokemon_model.dart';
+import 'package:poke_perfect/home/domain/usecase/get_pokemon_detail.dart';
 import 'package:poke_perfect/home/domain/usecase/get_pokemon_image.dart';
 import 'package:poke_perfect/home/domain/usecase/get_pokemons.dart';
 import 'package:poke_perfect/home/presentation/bloc/home_event.dart';
@@ -10,14 +12,18 @@ import 'package:poke_perfect/platform/logger/logger_service.dart';
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
   final GetAllPokemons getAllPokemons = GetIt.I<GetAllPokemons>();
   final GetPokemonImage getPokemonImage = GetIt.I<GetPokemonImage>();
+  final GetPokemonDetail getPokemonDetail = GetIt.I<GetPokemonDetail>();
 
   List<Pokemon> allPokemons = [];
+  List<PokemonDetail> allPokemonsDetail = [];
   String? nextUrl;
   bool isLoadingNextPage = false;
+  Map<String, String> imageCache = {};
 
   HomeBloc() : super(HomeInitial()) {
     on<FetchPokemons>(_onFetchPokemons);
     on<LoadNextPagePokemons>(_onLoadNextPagePokemons);
+    on<LoadImagePokemon>(_onLoadImagePokemon);
   }
 
   Future<void> _onFetchPokemons(
@@ -64,14 +70,34 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     }
   }
 
-  Future<String> fetchImage(String detailsUrl) async {
-    LoggerService.logDebug('Fetching image for Pokemon with URL: $detailsUrl');
+  Future<void> _onLoadImagePokemon(
+      LoadImagePokemon event, Emitter<HomeState> emit) async {
+    if (imageCache.containsKey(event.imageUrl)) {
+      return;
+    }
+
     try {
-      final imageUrl = await getPokemonImage(detailsUrl);
-      return imageUrl;
+      final imageUrl = await getPokemonImage(event.imageUrl);
+      imageCache[event.imageUrl] = imageUrl;
+      emit(HomeLoaded(allPokemons));
     } catch (e) {
-      LoggerService.logDebug('Error occurred in fetchImage: $e');
-      return '';
+      LoggerService.logDebug('Error occurred in _onLoadImagePokemon: $e');
     }
   }
+
+  //TODO: Implementar o carregamento dos detalhes do Pokemon ao invés de apenas a imagem
+  // Future<void> _onLoadImagePokemon(
+  //     LoadImagePokemon event, Emitter<HomeState> emit) async {
+  //   if (imageCache.containsKey(event.imageUrl)) {
+  //     return;
+  //   }
+
+  //   try {
+  //     final pokemonDetail = await getPokemonDetail(event.imageUrl);
+  //     imageCache[event.imageUrl] = pokemonDetail.name;
+  //     emit(HomeLoaded(allPokemons));
+  //   } catch (e) {
+  //     LoggerService.logDebug('Error occurred in _onLoadImagePokemon: $e');
+  //   }
+  // }
 }
