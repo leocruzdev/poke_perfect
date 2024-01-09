@@ -6,7 +6,7 @@ import 'package:poke_perfect/home/domain/usecase/get_pokemons.dart';
 import 'package:poke_perfect/home/presentation/bloc/home_event.dart';
 import 'package:poke_perfect/home/presentation/bloc/home_state.dart';
 import 'package:poke_perfect/platform/logger/logger_service.dart';
-import 'package:poke_perfect/shared_model/pokemon_domain.dart';
+import 'package:poke_perfect/shared_model/pokemon_detail_domain.dart';
 
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
   final GetAllPokemons getAllPokemons = GetIt.I<GetAllPokemons>();
@@ -17,7 +17,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   String? nextUrl;
   bool isLoadingNextPage = false;
   Map<String, String> imageCache = {};
-  Map<String, PokemonDomain> pokemonDetails = {};
+  Map<String, PokemonDetailDomain> pokemonDetails = {};
 
   HomeBloc() : super(HomeInitial()) {
     on<FetchPokemons>(_onFetchPokemons);

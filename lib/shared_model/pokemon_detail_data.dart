@@ -1,8 +1,8 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hive/hive.dart';
 
-part 'pokemon.freezed.dart';
-part 'pokemon.g.dart';
+part 'pokemon_detail_data.freezed.dart';
+part 'pokemon_detail_data.g.dart';
 
 @freezed
 class Pokemon with _$Pokemon {

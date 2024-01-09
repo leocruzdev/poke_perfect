@@ -1,9 +1,9 @@
-import 'package:poke_perfect/shared_model/pokemon.dart';
-import 'package:poke_perfect/shared_model/pokemon_domain.dart';
+import 'package:poke_perfect/shared_model/pokemon_detail_data.dart';
+import 'package:poke_perfect/shared_model/pokemon_detail_domain.dart';
 
 extension PokemonDataModelExtension on Pokemon {
-  PokemonDomain toDomain() {
-    return PokemonDomain(
+  PokemonDetailDomain toDomain() {
+    return PokemonDetailDomain(
       id: id,
       name: name,
       baseExperience: baseExperience,

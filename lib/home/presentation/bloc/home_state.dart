@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:poke_perfect/shared_model/pokemon_domain.dart';
+import 'package:poke_perfect/shared_model/pokemon_detail_domain.dart';
 
 abstract class HomeState extends Equatable {
   const HomeState();
@@ -13,7 +13,7 @@ class HomeLoading extends HomeState {}
 
 class HomeLoaded extends HomeState {
   final List<PokemonItemDomain> pokemons;
-  final Map<String, PokemonDomain> pokemonDetails;
+  final Map<String, PokemonDetailDomain> pokemonDetails;
 
   const HomeLoaded(this.pokemons, this.pokemonDetails);
   @override

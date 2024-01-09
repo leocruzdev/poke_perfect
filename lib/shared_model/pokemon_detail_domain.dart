@@ -1,4 +1,4 @@
-class PokemonDomain {
+class PokemonDetailDomain {
   final int id;
   final String name;
   final int baseExperience;
@@ -18,7 +18,7 @@ class PokemonDomain {
   final List<PokemonStatDomain> stats;
   final List<PokemonTypeDomain> types;
 
-  PokemonDomain({
+  PokemonDetailDomain({
     required this.id,
     required this.name,
     required this.baseExperience,

@@ -2,7 +2,7 @@ import 'package:injectable/injectable.dart';
 import 'package:poke_perfect/home/data/model/pokemon_list_model.dart';
 import 'package:poke_perfect/home/data/service/pokemon_api_service.dart';
 import 'package:poke_perfect/platform/logger/logger_service.dart';
-import 'package:poke_perfect/shared_model/pokemon.dart';
+import 'package:poke_perfect/shared_model/pokemon_detail_data.dart';
 
 abstract class RemoteDataSource {
   Future<PokemonListModel> fetchPokemons(
@@ -26,7 +26,7 @@ class ApiRemoteDataSource implements RemoteDataSource {
       final response = url != null
           ? await apiService.fetchPokemons(url: url)
           : await apiService.fetchPokemons(
-              limit: limit ?? 20, offset: offset ?? 0);
+              limit: limit ?? 5, offset: offset ?? 0);
 
       if (response.statusCode == 200) {
         LoggerService.logDebug(
@@ -69,7 +69,6 @@ class ApiRemoteDataSource implements RemoteDataSource {
     }
   }
 
-  //TODO FAZER CHAMADA PARA O DETALHE DO POKEMON PARA OBTER TODOS OS DADOS E NO USECASE FAZER O MAP PARA DOMAIN, VERIFICAR PORQUE ESTÁ CAINDO NO CATCH, VERIFICAR O OBJETO QUE ESTÁ VINDO DA API COM O POKEMONDATA
   @override
   Future<Pokemon> fetchPokemonDetail(String detailsUrl) async {
     LoggerService.logDebug('Fetching pokemon detail: $detailsUrl');

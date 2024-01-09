@@ -1,4 +1,4 @@
-import 'package:poke_perfect/shared_model/pokemon_domain.dart';
+import 'package:poke_perfect/shared_model/pokemon_detail_domain.dart';
 
 class PokemonList {
   final int count;

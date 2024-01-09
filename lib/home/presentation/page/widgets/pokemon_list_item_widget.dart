@@ -6,7 +6,7 @@ import 'package:poke_perfect/home/presentation/bloc/home_event.dart';
 import 'package:poke_perfect/home/presentation/bloc/home_state.dart';
 import 'package:poke_perfect/platform/navigator/navigator.dart';
 import 'package:poke_perfect/platform/navigator/routes.dart';
-import 'package:poke_perfect/shared_model/pokemon_domain.dart';
+import 'package:poke_perfect/shared_model/pokemon_detail_domain.dart';
 
 class PokemonListItem extends StatelessWidget {
   final PokemonItemDomain pokemon;

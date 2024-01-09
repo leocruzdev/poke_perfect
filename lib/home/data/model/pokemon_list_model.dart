@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hive/hive.dart';
-import 'package:poke_perfect/shared_model/pokemon.dart';
+import 'package:poke_perfect/shared_model/pokemon_detail_data.dart';
 
 part 'pokemon_list_model.freezed.dart';
 part 'pokemon_list_model.g.dart';

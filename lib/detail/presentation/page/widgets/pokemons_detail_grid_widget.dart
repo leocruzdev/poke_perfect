@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:poke_perfect/detail/presentation/page/widgets/pokemon_property_widget.dart';
-import 'package:poke_perfect/shared_model/pokemon_domain.dart';
+import 'package:poke_perfect/shared_model/pokemon_detail_domain.dart';
 
 class PokemonPropertiesGrid extends StatelessWidget {
-  final PokemonDomain pokemonDetail;
+  final PokemonDetailDomain pokemonDetail;
   const PokemonPropertiesGrid({super.key, required this.pokemonDetail});
 
   @override

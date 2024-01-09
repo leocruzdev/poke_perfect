@@ -4,15 +4,15 @@ import 'package:poke_perfect/detail/presentation/page/widgets/pokemon_detail_exp
 import 'package:poke_perfect/detail/presentation/page/widgets/pokemon_image_widget.dart';
 import 'package:poke_perfect/platform/design_system/navigable_app_bar.dart';
 import 'package:poke_perfect/platform/navigator/navigator.dart';
-import 'package:poke_perfect/shared_model/pokemon_domain.dart';
+import 'package:poke_perfect/shared_model/pokemon_detail_domain.dart';
 
 class DetailPage extends StatelessWidget {
   const DetailPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final PokemonDomain pokemonDetail =
-        GetIt.I<AppNavigator>().getExtras() as PokemonDomain;
+    final PokemonDetailDomain pokemonDetail =
+        GetIt.I<AppNavigator>().getExtras() as PokemonDetailDomain;
 
     return Scaffold(
       appBar: NavigableAppBar(

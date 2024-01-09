@@ -4,7 +4,7 @@ import 'package:poke_perfect/home/data/datasource/remote_data_source.dart';
 import 'package:poke_perfect/home/data/model/pokemon_list_model.dart';
 import 'package:poke_perfect/home/domain/pokemon_repository.dart';
 import 'package:poke_perfect/platform/logger/logger_service.dart';
-import 'package:poke_perfect/shared_model/pokemon.dart';
+import 'package:poke_perfect/shared_model/pokemon_detail_data.dart';
 
 @Injectable(as: PokemonRepository)
 class PokemonRepositoryImpl implements PokemonRepository {
