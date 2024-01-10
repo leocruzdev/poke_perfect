@@ -29,18 +29,18 @@ class PokemonListView extends StatelessWidget {
 
     return BlocBuilder<HomeBloc, HomeState>(
       builder: (context, state) {
-        if (state is HomeInitial) {
+        if (state.runtimeType == HomeInitial) {
           context.read<HomeBloc>().add(FetchPokemons());
           return const Center(child: CircularProgressIndicator());
-        }
-        if (state is HomeError) {
+        } else if (state.runtimeType == HomeError) {
+          final errorMessage = (state as HomeError).message;
           return Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: Text(state.message),
+                  child: Text(errorMessage),
                 ),
                 ElevatedButton(
                   onPressed: () =>
@@ -50,36 +50,43 @@ class PokemonListView extends StatelessWidget {
               ],
             ),
           );
-        }
-        final pokemons = state is HomeLoaded
-            ? state.pokemons
-            : (state is HomeLoadMore ? state.pokemons : []);
-        final isLoadMore = state is HomeLoadMore && !state.isMax;
+        } else if (state.runtimeType == HomeLoaded ||
+            state.runtimeType == HomeLoadMore) {
+          final pokemons = state is HomeLoaded
+              ? state.pokemons
+              : (state as HomeLoadMore).pokemons;
+          final isLoadMore = state.runtimeType == HomeLoadMore &&
+              !(state as HomeLoadMore).isMax;
 
-        return NotificationListener<ScrollNotification>(
-          onNotification: (scrollInfo) {
-            if (scrollInfo.metrics.pixels ==
-                    scrollInfo.metrics.maxScrollExtent &&
-                !isLoadMore) {
-              context.read<HomeBloc>().add(LoadNextPagePokemons());
-            }
-            return true;
-          },
-          child: ListView.builder(
-            itemCount: pokemons.length + (isLoadMore ? 1 : 0),
-            itemBuilder: (context, index) {
-              if (index >= pokemons.length) {
-                return const Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: Center(child: CircularProgressIndicator()),
-                );
+          return NotificationListener<ScrollNotification>(
+            onNotification: (scrollInfo) {
+              if (scrollInfo.metrics.pixels ==
+                      scrollInfo.metrics.maxScrollExtent &&
+                  !isLoadMore) {
+                context.read<HomeBloc>().add(LoadNextPagePokemons());
               }
-              final pokemon = pokemons[index];
-
-              return PokemonListItem(pokemon: pokemon);
+              return true;
             },
-          ),
-        );
+            child: ListView.builder(
+              addRepaintBoundaries: true,
+              itemCount: pokemons.length + (isLoadMore ? 1 : 0),
+              itemBuilder: (context, index) {
+                final pokemon = pokemons[index];
+
+                if (index >= pokemons.length) {
+                  return const Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: Center(child: CircularProgressIndicator()),
+                  );
+                }
+
+                return PokemonListItem(pokemon: pokemon);
+              },
+            ),
+          );
+        }
+
+        return const Center(child: CircularProgressIndicator());
       },
     );
   }
