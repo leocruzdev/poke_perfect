@@ -32,16 +32,14 @@ import 'package:poke_perfect/home/data/repository/pokemon_repository_impl.dart'
 import 'package:poke_perfect/home/data/service/pokemon_api_service.dart' as _i9;
 import 'package:poke_perfect/home/data/service/pokemon_api_service_impl.dart'
     as _i10;
-import 'package:poke_perfect/home/di/dio_module.dart' as _i22;
-import 'package:poke_perfect/home/di/hive_module.dart' as _i23;
+import 'package:poke_perfect/home/di/dio_module.dart' as _i21;
+import 'package:poke_perfect/home/di/hive_module.dart' as _i22;
 import 'package:poke_perfect/home/domain/pokemon_repository.dart' as _i17;
 import 'package:poke_perfect/home/domain/usecase/get_pokemon_detail.dart'
     as _i20;
-import 'package:poke_perfect/home/domain/usecase/get_pokemon_image.dart'
-    as _i21;
 import 'package:poke_perfect/home/domain/usecase/get_pokemons.dart' as _i19;
 import 'package:poke_perfect/platform/navigator/di/navigator_module.dart'
-    as _i24;
+    as _i23;
 import 'package:poke_perfect/platform/navigator/navigator.dart' as _i15;
 import 'package:poke_perfect/platform/navigator/page_navigator.dart' as _i7;
 
@@ -92,14 +90,12 @@ extension GetItInjectableX on _i1.GetIt {
         () => _i19.GetAllPokemons(gh<_i17.PokemonRepository>()));
     gh.factory<_i20.GetPokemonDetail>(
         () => _i20.GetPokemonDetail(gh<_i17.PokemonRepository>()));
-    gh.factory<_i21.GetPokemonImage>(
-        () => _i21.GetPokemonImage(gh<_i17.PokemonRepository>()));
     return this;
   }
 }
 
-class _$DioModule extends _i22.DioModule {}
+class _$DioModule extends _i21.DioModule {}
 
-class _$HiveModule extends _i23.HiveModule {}
+class _$HiveModule extends _i22.HiveModule {}
 
-class _$GoRouterModule extends _i24.GoRouterModule {}
+class _$GoRouterModule extends _i23.GoRouterModule {}

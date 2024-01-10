@@ -43,19 +43,6 @@ class PokemonRepositoryImpl implements PokemonRepository {
   }
 
   @override
-  Future<String> fetchPokemonImage(String detailsUrl) async {
-    try {
-      LoggerService.logDebug(
-          'Fetching pokemon image from: $detailsUrl'); // Log de início de busca de imagem
-      return await remoteDataSource.fetchPokemonImage(detailsUrl);
-      // Log de sucesso não é necessário aqui, pois se chegar a essa linha, não houve exceção
-    } catch (e) {
-      LoggerService.logDebug('Failed to load pokemon image: $e'); // Log de erro
-      throw Exception('Failed to load pokemon image: $e');
-    }
-  }
-
-  @override
   Future<Pokemon> fetchPokemonDetail(String detailsUrl) async {
     try {
       LoggerService.logDebug(

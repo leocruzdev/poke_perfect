@@ -7,7 +7,6 @@ import 'package:poke_perfect/shared_model/pokemon_detail_data.dart';
 abstract class RemoteDataSource {
   Future<PokemonListModel> fetchPokemons(
       {String? url, int? limit, int? offset});
-  Future<String> fetchPokemonImage(String detailsUrl);
   Future<Pokemon> fetchPokemonDetail(String detailsUrl);
 }
 
@@ -42,30 +41,6 @@ class ApiRemoteDataSource implements RemoteDataSource {
       LoggerService.logDebug(
           'Exception occurred while fetching pokemons: $e'); // Log da exceção
       throw Exception('Failed to load pokemon: $e');
-    }
-  }
-
-  @override
-  Future<String> fetchPokemonImage(String detailsUrl) async {
-    LoggerService.logDebug(
-        'Fetching pokemon image: $detailsUrl'); // Log de início de fetch da imagem
-    try {
-      final response = await apiService.fetchPokemonImage(detailsUrl);
-      if (response.statusCode == 200) {
-        LoggerService.logDebug(
-            'Pokemon image fetched successfully.'); // Log de sucesso
-        final decoded = response.data;
-        return decoded['sprites']['front_default'] ?? '';
-      } else {
-        LoggerService.logDebug(
-            'Failed to load pokemon details. Status code: ${response.statusCode}'); // Log de erro
-        throw Exception(
-            'Failed to load pokemon details: ${response.statusCode}');
-      }
-    } catch (e) {
-      LoggerService.logDebug(
-          'Exception occurred while fetching pokemon image: $e'); // Log da exceção
-      throw Exception('Failed to load pokemon details: $e');
     }
   }
 

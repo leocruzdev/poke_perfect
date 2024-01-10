@@ -1,7 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:poke_perfect/home/domain/usecase/get_pokemon_detail.dart';
-import 'package:poke_perfect/home/domain/usecase/get_pokemon_image.dart';
 import 'package:poke_perfect/home/domain/usecase/get_pokemons.dart';
 import 'package:poke_perfect/home/presentation/bloc/home_event.dart';
 import 'package:poke_perfect/home/presentation/bloc/home_state.dart';
@@ -10,7 +9,6 @@ import 'package:poke_perfect/shared_model/pokemon_detail_domain.dart';
 
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
   final GetAllPokemons getAllPokemons = GetIt.I<GetAllPokemons>();
-  final GetPokemonImage getPokemonImage = GetIt.I<GetPokemonImage>();
   final GetPokemonDetail getPokemonDetail = GetIt.I<GetPokemonDetail>();
 
   List<PokemonItemDomain> allPokemons = [];

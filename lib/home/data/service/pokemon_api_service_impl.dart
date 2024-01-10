@@ -15,11 +15,6 @@ class PokemonApiServiceImpl implements PokemonApiService {
   }
 
   @override
-  Future<Response> fetchPokemonImage(String detailsUrl) async {
-    return dio.get(detailsUrl);
-  }
-
-  @override
   Future<Response> fetchPokemonDetail(String detailsUrl) {
     return dio.get(detailsUrl);
   }
