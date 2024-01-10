@@ -26,6 +26,7 @@ class PokemonListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     LoggerService.logDebug('PokemonListView built');
+
     return BlocBuilder<HomeBloc, HomeState>(
       builder: (context, state) {
         if (state is HomeInitial) {
@@ -65,7 +66,6 @@ class PokemonListView extends StatelessWidget {
             return true;
           },
           child: ListView.builder(
-            shrinkWrap: true,
             itemCount: pokemons.length + (isLoadMore ? 1 : 0),
             itemBuilder: (context, index) {
               if (index >= pokemons.length) {

@@ -1,5 +1,7 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get_it/get_it.dart';
 import 'package:poke_perfect/home/presentation/bloc/home_bloc.dart';
 import 'package:poke_perfect/home/presentation/bloc/home_event.dart';
@@ -16,10 +18,10 @@ class PokemonListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final navigator = GetIt.I<AppNavigator>();
+    final imageUrl = context.read<HomeBloc>().imageCache[pokemon.url];
 
     return BlocBuilder<HomeBloc, HomeState>(
       builder: (context, state) {
-        final imageUrl = context.read<HomeBloc>().imageCache[pokemon.url];
         final pokemonDetail =
             context.read<HomeBloc>().pokemonDetails[pokemon.url];
 
@@ -43,39 +45,30 @@ class PokemonListItem extends StatelessWidget {
             child: Row(
               children: [
                 imageUrl != null
-                    ? Image.network(
-                        imageUrl,
-                        width: 50,
-                        height: 50,
-                        errorBuilder: (context, error, stackTrace) =>
+                    ? CachedNetworkImage(
+                        imageUrl: imageUrl,
+                        width: 50.w,
+                        height: 50.h,
+                        placeholder: (context, url) =>
+                            const CircularProgressIndicator(),
+                        errorWidget: (context, url, error) =>
                             const Icon(Icons.broken_image_outlined),
                       )
                     : const CircularProgressIndicator(),
-                const SizedBox(width: 10),
+                SizedBox(width: 10.w),
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      Text(pokemonDetail?.name ?? 'Carregando...',
+                          style: const TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 16)),
                       Text(
-                        pokemonDetail?.name ?? 'Carregando...',
-                        style: const TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16,
-                        ),
-                      ),
-                      Text(
-                        pokemonDetail?.types.firstOrNull?.type.name ??
-                            'Carregando...',
-                        style: const TextStyle(
-                          fontStyle: FontStyle.italic,
-                        ),
-                      ),
-                      Text(
-                        pokemonDetail?.id.toString() ?? 'Carregando...',
-                        style: const TextStyle(
-                          fontStyle: FontStyle.italic,
-                        ),
-                      ),
+                          pokemonDetail?.types.firstOrNull?.type.name ??
+                              'Carregando...',
+                          style: const TextStyle(fontStyle: FontStyle.italic)),
+                      Text(pokemonDetail?.id.toString() ?? 'Carregando...',
+                          style: const TextStyle(fontStyle: FontStyle.italic)),
                     ],
                   ),
                 ),

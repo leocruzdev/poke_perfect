@@ -1,4 +1,6 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class PokemonImage extends StatelessWidget {
   final String url;
@@ -6,18 +8,13 @@ class PokemonImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.all(8),
-      width: 100,
-      height: 100,
-      decoration: BoxDecoration(
-        color: Colors.transparent,
-        borderRadius: BorderRadius.circular(8.0),
-        image: DecorationImage(
-          image: NetworkImage(url),
-          fit: BoxFit.cover,
-        ),
-      ),
+    return CachedNetworkImage(
+      imageUrl: url,
+      width: 100.w,
+      height: 100.h,
+      placeholder: (context, url) => const CircularProgressIndicator(),
+      errorWidget: (context, url, error) =>
+          const Icon(Icons.broken_image_outlined),
     );
   }
 }
