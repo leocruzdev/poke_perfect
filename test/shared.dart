@@ -34,7 +34,7 @@ final fakePokemonListWithLoading = PokemonList(
 final fakePokemonDetail = PokemonDetailDomain(
   id: 1,
   name: 'Bulbasaur',
-  height: 7, // Defina a altura desejada
+  height: 7,
   types: [
     PokemonTypeDomain(
         slot: 1,
@@ -44,9 +44,9 @@ final fakePokemonDetail = PokemonDetailDomain(
         slot: 2,
         type: PokemonItemDomain(
             name: 'Poison', url: 'http://fakeapi.com/type/poison')),
-  ], // Defina os tipos desejados
+  ],
   sprites: PokemonSpritesDomain(
-    frontDefault: 'http://fakeapi.com/sprites/1', // URL da imagem desejada
+    frontDefault: 'http://fakeapi.com/sprites/1',
   ),
   abilities: [
     PokemonAbilityDomain(
@@ -55,11 +55,11 @@ final fakePokemonDetail = PokemonDetailDomain(
       ability: PokemonItemDomain(
           name: 'Overgrow', url: 'http://fakeapi.com/ability/overgrow'),
     ),
-  ], // Defina as habilidades desejadas
+  ],
   forms: [
     PokemonItemDomain(
         name: 'Bulbasaur Form 1', url: 'http://fakeapi.com/form/1'),
-  ], // Defina as formas desejadas
+  ],
   moves: [
     PokemonMoveDomain(
       move: PokemonItemDomain(
@@ -72,12 +72,12 @@ final fakePokemonDetail = PokemonDetailDomain(
         ),
       ],
     ),
-  ], // Defina os movimentos desejados
+  ],
   stats: [
     PokemonStatDomain(
       baseStat: 45,
       effort: 0,
       stat: PokemonItemDomain(name: 'HP', url: 'http://fakeapi.com/stat/hp'),
     ),
-  ], // Defina os stats desejados
+  ],
 );

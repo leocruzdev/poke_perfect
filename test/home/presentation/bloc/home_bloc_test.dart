@@ -53,7 +53,6 @@ void main() {
         when(() => mockGetAllPokemons())
             .thenAnswer((_) async => fakePokemonListModel.toDomain());
 
-        // Emit HomeLoading manualmente antes de adicionar FetchPokemons
         bloc.add(FetchPokemons());
         await expectLater(
           bloc.stream,
@@ -72,8 +71,7 @@ void main() {
             .thenAnswer((_) async => fakePokemonList);
         bloc.add(LoadNextPagePokemons());
       },
-      expect: () =>
-          [isA<HomeLoaded>()], // Ajuste para esperar apenas HomeLoaded
+      expect: () => [isA<HomeLoaded>()],
     );
 
     blocTest<HomeBloc, HomeState>(

@@ -34,20 +34,16 @@ void main() {
     );
 
     test('Deve retornar uma lista de Pokémons quando não há erro', () async {
-      // Arrange
       when(() => mockPokemonRepository.getAllPokemons(
               limit: any(named: 'limit'), offset: any(named: 'offset')))
           .thenAnswer((_) async => testPokemonListModel);
 
-      // Act
       final result = await getAllPokemons(limit: 20, offset: 0);
 
-      // Assert
       expect(result.count, equals(testPokemonListModel.count));
       expect(result.next, equals(testPokemonListModel.next));
       expect(result.previous, equals(testPokemonListModel.previous));
 
-      // Aqui você compara os campos individuais dos itens da lista de pokemons
       for (var i = 0; i < result.pokemons.length; i++) {
         expect(result.pokemons[i].name,
             equals(testPokemonListModel.results[i].name));
@@ -60,12 +56,10 @@ void main() {
     });
 
     test('Deve lançar uma exceção quando o repositório falhar', () {
-      // Arrange
       when(() => mockPokemonRepository.getAllPokemons(
               limit: any(named: 'limit'), offset: any(named: 'offset')))
           .thenThrow(Exception('Failed to fetch'));
 
-      // Act & Assert
       expect(() async => getAllPokemons(limit: 20, offset: 0),
           throwsA(isInstanceOf<Exception>()));
     });
